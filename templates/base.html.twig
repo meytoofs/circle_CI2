@@ -4,8 +4,13 @@
         <meta charset="UTF-8">
         <title>{% block title %}Coronavirus!{% endblock %}</title>
         {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<<<<<<< HEAD
         
+=======
+        {{ encore_entry_link_tags('app') }}
+>>>>>>> 032de2f79c90fd718f99f8dcd3b8afa9081d5dc8
         {% endblock %}
     </head>
     <body>
@@ -42,14 +47,22 @@
         </header>
         {% endblock %}
         {% block body %}{% endblock %}
+<<<<<<< HEAD
        
         {% block javascripts %}
             
+=======
+        {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+>>>>>>> 032de2f79c90fd718f99f8dcd3b8afa9081d5dc8
 
             <!-- Renders app.js & a webpack runtime.js file
                 <script src="/build/runtime.js"></script>
                 <script src="/build/app.js"></script> -->
         {% endblock %}
+<<<<<<< HEAD
     
+=======
+>>>>>>> 032de2f79c90fd718f99f8dcd3b8afa9081d5dc8
     </body>
 </html>
