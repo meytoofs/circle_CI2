@@ -2,6 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Room;
+use App\Form\RoomType;
+use App\Entity\Message;
+use App\Form\MessageType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,9 +28,13 @@ class ChatController extends AbstractController
     /**
      * @Route("/room", name="room")
      */
-    public function room()
+    public function room(): Response
     {
+        $rooms = $this->getDoctrine()
+        ->getRepository(Room::class)
+        ->findAll();
         return $this->render('chat/room.html.twig', [
+            'rooms' => $rooms,
 
         ]);
     }
@@ -50,29 +58,6 @@ class ChatController extends AbstractController
         return $this->render('chat/new.html.twig', [
             'room' => $room,
             'form' => $form->createView(),
-        ]);
-    }
-    /**
-     * @Route("/{id}", name="room_chat", methods={GET})
-     */
-    public function chatMessage(Request $request, Room $room): Response
-    {
-        $message = new Message();
-        $form = $this->createForm(MessageType::class, $message);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($room);
-            $entityManager->flush();
-
-            return $this->render('chat/chat.html.twig', [
-
-            ]);
-        }
-
-        return $this->render('chat/chat.html.twig', [
-            'message' => $message,
-            'room' =>$room,
         ]);
     }
 }
