@@ -22,7 +22,7 @@ class Room
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $title;
+    public $title;
 
     /**
      * @ORM\Column(type="string", length=255)
