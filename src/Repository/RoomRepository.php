@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Room;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\QueryBuilder as ORMQueryBuilder;
 
 /**
  * @method Room|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,11 +20,37 @@ class RoomRepository extends ServiceEntityRepository
         parent::__construct($registry, Room::class);
     }
 
+    /**
+     * @return string
+     */
+    public function allMessages(): string
+    {
+        $query = $this
+        ->createQueryBuilder('room')
+        ->select('room', 'm')
+        ->join('room.messages', 'm')
+        ->where('m.room = 1')
+        ->getQuery()
+        ->getResult()
+        ;
+        return $query;
+    }
+    // /**
+    //  * Récupère tout les messages en lien avec une room
+    //  * @return array[]
+    //  */
+    // public function messages(): ORMQueryBuilder
+    // {
+    //     $query = $this
+    //     ->createQueryBuilder('mess')
+    //     ->select('message')
+    //     ->where('r_id = 1');
+    // }
     // /**
     //  * @return Room[] Returns an array of Room objects
     //  */
     /*
-    public function findByExampleField($value)
+    public function findBy($value)
     {
         return $this->createQueryBuilder('r')
             ->andWhere('r.exampleField = :val')
@@ -34,7 +61,6 @@ class RoomRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Room

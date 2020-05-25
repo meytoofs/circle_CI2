@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Message;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bridge\Doctrine\Form\ChoiceList\ORMQueryBuilderLoader;
+use Doctrine\ORM\QueryBuilder as ORMQueryBuilder;
 
 /**
  * @method Message|null find($id, $lockMode = null, $lockVersion = null)
@@ -18,23 +20,31 @@ class MessageRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Message::class);
     }
-
+    public function allMessages(): ORMQueryBuilder 
+    {
+        $query = $this
+        ->createQueryBuilder('room')
+        ->select('r', 'm')
+        ->join('room.messages', 'm')
+        ->where('m.room_id = 1')
+        ->getQuery()->getResult()
+        ;
+        return $query;
+    }
     // /**
     //  * @return Message[] Returns an array of Message objects
     //  */
     /*
-    public function findByExampleField($value)
+    public function findBy()
     {
         return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('r.id = 1')
             ->orderBy('m.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Message

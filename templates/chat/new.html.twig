@@ -3,9 +3,11 @@
 {% block title %}Creer room{% endblock %}
 
 {% block body %}
-<section>
-    <h1>Créer une nouvelle room</h1>
-    {{ include('chat/_form.html.twig') }}
-    <a role="button" class="btn btn-outline-danger" href="{{ path('room') }}">Revenir à la selection des Room</a>
-</section>
+<div class="wrapper">
+    <div class="container">
+        <h1>Créer une nouvelle room</h1>
+        {{ include('chat/_form.html.twig') }}
+        <a role="button" class="btn btn-outline-danger" href="#">Revenir à la selection des Room</a>
+    </div>
+</div>
 {% endblock %}

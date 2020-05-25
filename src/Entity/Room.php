@@ -2,13 +2,18 @@
 
 namespace App\Entity;
 
-use App\Repository\RoomRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\RoomRepository;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=RoomRepository::class)
+ * @ApiResource(
+ *      normalizationContext={"groups"={"room:Message"}})
  */
 class Room
 {
@@ -16,28 +21,34 @@ class Room
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("room:Message")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("room:Message")
      */
     public $title;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("room:Message")
      */
     private $type;
 
     /**
+     * @var \DateTime $creationDate
+     * 
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
     private $creationDate;
 
-   
 
     /**
      * @ORM\OneToMany(targetEntity=Message::class, mappedBy="room")
+     * @Groups("room:Message")
      */
     private $messages;
 
@@ -87,13 +98,6 @@ class Room
         return $this->creationDate;
     }
 
-    public function setCreationDate(\DateTimeInterface $creationDate): self
-    {
-        $this->creationDate = $creationDate;
-
-        return $this;
-    }
-
     
     /**
      * @return Collection|Message[]
@@ -137,6 +141,9 @@ class Room
 
         return $this;
     }
-
+    public function __toString()
+    {
+        return $this->title;
+    }
     
 }

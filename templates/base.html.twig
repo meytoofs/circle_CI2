@@ -22,7 +22,7 @@
                         <a class="nav-item nav-link active" href="#">Accueil <span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link" href="#">Communauté</a>
                         <a class="nav-item nav-link" href="#">Marketplace </br><i>(En construction)</i></i></a>
-                        <a class="nav-item nav-link" href="#">Chat</a>
+                        <a class="nav-item nav-link" href={{ path('rule') }}>Chat</a>
                     </div>
                     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                     <div class="d-flex flex-row-reverse bd-highlight">
