@@ -1,9 +1,5 @@
 easy_admin:
    entities:
-
-        
-        - App\Entity\User
-        - App\Entity\Room
-        - App\Entity\NoteHistory
-        - App\Entity\Message
-        - App\Entity\IdeaProposition
+       # List the entity class name you want to manage
+       
+       - App\Entity\User
