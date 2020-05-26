@@ -37,6 +37,9 @@ class UidExtension extends AbstractExtension
     {
         $pipe = "Ma div est un volcan";
         return $pipe;
-
+    }
+    public function GenerateDatedesesmorts()
+    {
+    
     }
 }
