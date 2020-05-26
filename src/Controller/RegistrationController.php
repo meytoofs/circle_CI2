@@ -13,30 +13,23 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class RegistrationController extends AbstractController
 {
     /**
-     * @Route("/register", name="app_register")
+     * @Route("/inscription", name="app_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
-    {
-        $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+    public function register(Request $request, UserPasswordEncoderInterface $encoder)
+    {   
+        $user=new User();
+        $form=$this->createForm(RegistrationFormType::class,$user);
         $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
-            $user->setPassword(
-                $passwordEncoder->encodePassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            // do anything else you need here, like send an email
-
-            return $this->redirectToRoute('');
+        if($form->isSubmitted() && $form->isValid()) {
+           $hash=$encoder->encodePassword($user,$user->getPassword());
+            $user->setpassword($hash); 
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+           // $manager->persist($article);
+           // $manager->flush();
+           return $this->redirectToRoute('app_login');
+        
         }
 
         return $this->render('registration/register.html.twig', [
