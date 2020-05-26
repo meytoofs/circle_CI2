@@ -39,24 +39,24 @@ class ChatController extends AbstractController
     /**
      * @Route("/new", name="room_news", methods={"GET", "POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request) 
     {
-        $room = new Room();
-        $form = $this->createForm(RoomType::class, $room);
-        $form->handleRequest($request);
+        // $room = new Room();
+        // $form = $this->createForm(RoomType::class, $room);
+        // $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($room);
-            $entityManager->flush();
+        // if ($form->isSubmitted() && $form->isValid()) {
+        //     $entityManager = $this->getDoctrine()->getManager();
+        //     $entityManager->persist($room);
+        //     $entityManager->flush();
 
-            return $this->redirectToRoute('');
-        }
+        //     return $this->redirectToRoute('');
+        // }
 
-        return $this->render('chat/new.html.twig', [
-            'room' => $room,
-            'form' => $form->createView(),
-        ]);
+        // return $this->render('chat/new.html.twig', [
+        //     'room' => $room,
+        //     'form' => $form->createView(),
+        // ]);
     }
     // /**
     //  * @Route("/{id}", name="room_chat", methods={GET})
