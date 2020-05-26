@@ -2,9 +2,9 @@
 
 namespace App\Entity;
 
-use App\Entity\Room;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\MessageRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=MessageRepository::class)
@@ -15,22 +15,26 @@ class Message
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"room:Message"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("room:Message")
      */
     private $content;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("room:Message")
      */
     private $published;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="messages")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("room:Message")
      */
     private $user;
 

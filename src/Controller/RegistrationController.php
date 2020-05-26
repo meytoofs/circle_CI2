@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Security\LoginFormAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
 class RegistrationController extends AbstractController
 {
@@ -21,14 +23,14 @@ class RegistrationController extends AbstractController
         $form=$this->createForm(RegistrationFormType::class,$user);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
-           $hash=$encoder->encodePassword($user,$user->getPassword());
+        $hash=$encoder->encodePassword($user,$user->getPassword());
             $user->setpassword($hash); 
             $em=$this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
            // $manager->persist($article);
            // $manager->flush();
-           return $this->redirectToRoute('app_login');
+        return $this->redirectToRoute('app_login');
         
         }
 
