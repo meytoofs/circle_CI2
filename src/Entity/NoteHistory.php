@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\NoteHistoryRepository;
+use App\Entity\IdeaProposition;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\NoteHistoryRepository;
 
 /**
  * @ORM\Entity(repositoryClass=NoteHistoryRepository::class)
