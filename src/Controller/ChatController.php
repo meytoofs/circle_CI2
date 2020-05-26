@@ -9,6 +9,7 @@ use App\Entity\Message;
 use App\Form\MessageType;
 use App\Repository\RoomRepository;
 use App\Repository\MessageRepository;
+use App\Twig\UidExtension;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -34,7 +35,7 @@ class ChatController extends AbstractController
     /**
      * @Route("/room", name="room", methods={"GET"})
      */
-    public function room(): Response
+    public function room(UidExtension $uid2): Response
     {
         $rooms = $this->getDoctrine()
         ->getRepository(Room::class)

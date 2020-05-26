@@ -22,6 +22,7 @@
                     <a class="btn btn-info" role="button" href="{{ path('chat_show', {'id': room.id}) }}">Connexion</a>
                 </td>
             </tr>
+            {{dump(app)}};
             {% endfor %}
         </tbody>
 
@@ -29,5 +30,8 @@
     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
     <a role="button" class="btn btn-primary" href="{{ path('room_news') }}">Créer nouvel Room</a>
     {% endif %}
+    <div id={{ duku() }}>coucou </div>
+    <div id={{ jambe_de_bois()}}>ma pipe </div>
+    <time datetime="{{'now'|date('Y-m-d')}}"></time>
 </section>
 {% endblock %}
