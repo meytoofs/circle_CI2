@@ -19,9 +19,9 @@
         "symfony/http-client": "5.0.*",
         "symfony/intl": "5.0.*",
         "symfony/mailer": "5.0.*",
-        "symfony/monolog-bundle": "^3.1",
+        "symfony/monolog-bundle": "^3.5",
         "symfony/notifier": "5.0.*",
-        "symfony/orm-pack": "*",
+        "symfony/orm-pack": "^1.0",
         "symfony/process": "5.0.*",
         "symfony/security-bundle": "5.0.*",
         "symfony/security-core": "5.0.*",
@@ -29,6 +29,7 @@
         "symfony/serializer-pack": "*",
         "symfony/string": "5.0.*",
         "symfony/translation": "5.0.*",
+        "symfony/twig-bundle": "5.0.*",
         "symfony/twig-pack": "*",
         "symfony/validator": "5.0.*",
         "symfony/web-link": "5.0.*",
@@ -37,7 +38,7 @@
     },
     "require-dev": {
         "symfony/debug-pack": "*",
-        "symfony/maker-bundle": "^1.0",
+        "symfony/maker-bundle": "^1.18",
         "symfony/profiler-pack": "*",
         "symfony/test-pack": "*"
     },
@@ -85,6 +86,7 @@
         "symfony": {
             "allow-contrib": false,
             "require": "5.0.*"
+            
         }
     }
 }

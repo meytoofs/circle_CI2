@@ -8,10 +8,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
+ * @UniqueEntity(fields={"email"}, message="l'email que vous avez indiqué est déja utilisé")
  */
 class User implements UserInterface
 {
@@ -24,6 +26,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank
      */
     private $username;
 
@@ -35,27 +38,35 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank
+     * @Assert\Length(min=8,max=255 , minMessage="votre mot de passe doit faire minimum 8 caractères ")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $first_name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $last_name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Email(message = "votre email n'est pas valide")
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
      */
+     
     private $adress;
 
     /**
@@ -65,6 +76,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Country
      */
     private $country;
 
@@ -82,6 +94,12 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity=Message::class, mappedBy="user")
      */
     private $messages;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\EqualTo(propertyPath="password",message="vous n'avez pas taper le meme mot de passe")
+     */
+    private $confirmPassword;
 
     
 
@@ -333,6 +351,22 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+
+    public function getConfirmPassword(): ?string
+    {
+        return $this->confirmPassword;
+    }
+
+    public function setConfirmPassword(string $confirmPassword): self
+    {
+        $this->confirmPassword = $confirmPassword;
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->getCountry();
     }
 
 }
