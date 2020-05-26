@@ -18,8 +18,11 @@
             <tr>
                 <td>{{ room.title }}</td>
                 <td>{{ room.type }}</td>
-                <td>{{ room.creation_date }}</td>
+                <td>
+                    <a class="btn btn-info" role="button" href="{{ path('chat_show', {'id': room.id}) }}">Connexion</a>
+                </td>
             </tr>
+            {{dump(app)}};
             {% endfor %}
         </tbody>
 
