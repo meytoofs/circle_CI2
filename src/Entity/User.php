@@ -3,13 +3,17 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
+ * @UniqueEntity(fields={"email"}, message="l'email que vous avez indiqué est déja utilisé")
  */
 class User implements UserInterface
 {
@@ -22,6 +26,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank
      */
     private $username;
 
@@ -33,27 +38,35 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank
+     * @Assert\Length(min=8,max=255 , minMessage="votre mot de passe doit faire minimum 8 caractères ")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $first_name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $last_name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Email(message = "votre email n'est pas valide")
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
      */
+     
     private $adress;
 
     /**
@@ -63,8 +76,44 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Country
      */
     private $country;
+
+    /**
+     * @ORM\OneToMany(targetEntity=IdeaProposition::class, mappedBy="user")
+     */
+    private $ideaPropositions;
+
+    /**
+     * @ORM\OneToMany(targetEntity=NoteHistory::class, mappedBy="user")
+     */
+    private $noteHistories;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Message::class, mappedBy="user")
+     */
+    private $messages;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\EqualTo(propertyPath="password",message="vous n'avez pas taper le meme mot de passe")
+     */
+    private $confirmPassword;
+
+    
+
+   
+
+    public function __construct()
+    {
+        $this->ideaPropositions = new ArrayCollection();
+        $this->noteHistories = new ArrayCollection();
+        $this->messages = new ArrayCollection();
+        
+    
+        
+    }
 
     public function getId(): ?int
     {
@@ -210,4 +259,114 @@ class User implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection|IdeaProposition[]
+     */
+    public function getIdeaPropositions(): Collection
+    {
+        return $this->ideaPropositions;
+    }
+
+    public function addIdeaProposition(IdeaProposition $ideaProposition): self
+    {
+        if (!$this->ideaPropositions->contains($ideaProposition)) {
+            $this->ideaPropositions[] = $ideaProposition;
+            $ideaProposition->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIdeaProposition(IdeaProposition $ideaProposition): self
+    {
+        if ($this->ideaPropositions->contains($ideaProposition)) {
+            $this->ideaPropositions->removeElement($ideaProposition);
+            // set the owning side to null (unless already changed)
+            if ($ideaProposition->getUser() === $this) {
+                $ideaProposition->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|NoteHistory[]
+     */
+    public function getNoteHistories(): Collection
+    {
+        return $this->noteHistories;
+    }
+
+    public function addNoteHistory(NoteHistory $noteHistory): self
+    {
+        if (!$this->noteHistories->contains($noteHistory)) {
+            $this->noteHistories[] = $noteHistory;
+            $noteHistory->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNoteHistory(NoteHistory $noteHistory): self
+    {
+        if ($this->noteHistories->contains($noteHistory)) {
+            $this->noteHistories->removeElement($noteHistory);
+            // set the owning side to null (unless already changed)
+            if ($noteHistory->getUser() === $this) {
+                $noteHistory->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Message[]
+     */
+    public function getMessages(): Collection
+    {
+        return $this->messages;
+    }
+
+    public function addMessage(Message $message): self
+    {
+        if (!$this->messages->contains($message)) {
+            $this->messages[] = $message;
+            $message->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessage(Message $message): self
+    {
+        if ($this->messages->contains($message)) {
+            $this->messages->removeElement($message);
+            // set the owning side to null (unless already changed)
+            if ($message->getUser() === $this) {
+                $message->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getConfirmPassword(): ?string
+    {
+        return $this->confirmPassword;
+    }
+
+    public function setConfirmPassword(string $confirmPassword): self
+    {
+        $this->confirmPassword = $confirmPassword;
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->getCountry();
+    }
+
 }
