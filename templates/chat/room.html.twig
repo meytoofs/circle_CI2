@@ -25,7 +25,6 @@
             {{dump(app)}};
             {% endfor %}
         </tbody>
-
     </table>
     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
     <a role="button" class="btn btn-primary" href="{{ path('room_news') }}">Créer nouvel Room</a>
