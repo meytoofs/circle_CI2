@@ -13,7 +13,8 @@ class Messages extends Component {
     }
     
     componentDidMount() {
-        fetch("http://localhost:8000/api/rooms/1/")
+        var data = document.getElementById('root').dataset.room_id;
+        fetch("http://localhost:8000/api/rooms/"+data)
         .then(res => res.json())
         .then(
             (result) => {
@@ -45,7 +46,7 @@ class Messages extends Component {
                         </div>
     
 
-                            <div className={'moi'}>
+                            <div className={'moi'} data="">
                                 {this.state.messages.map(message =>
                                     <div className="col-md-10 offset-md-1 row-block" key={message.id}>
                                         <ul id="sortable">

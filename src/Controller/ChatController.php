@@ -35,7 +35,7 @@ class ChatController extends AbstractController
     /**
      * @Route("/room", name="room", methods={"GET"})
      */
-    public function room(UidExtension $uid2): Response
+    public function room(): Response
     {
         $rooms = $this->getDoctrine()
         ->getRepository(Room::class)
@@ -57,7 +57,7 @@ class ChatController extends AbstractController
         $response = new JsonResponse($json, 200, [], true);
         return $this->render('chat/chat.html.twig', [
             'messages' => $displayMessage,
-
+            'room' => $room,
         ]);
     }
     /**
