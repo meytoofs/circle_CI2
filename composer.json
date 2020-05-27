@@ -6,8 +6,10 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "api-platform/api-pack": "^1.2",
+        "doctrine/doctrine-fixtures-bundle": "^3.3",
         "easycorp/easyadmin-bundle": "^2.3",
         "limenius/react-bundle": "^5.0",
+        "mbezhanov/faker-provider-collection": "^1.2",
         "sensio/framework-extra-bundle": "^5.5",
         "stof/doctrine-extensions-bundle": "^1.4",
         "symfony/asset": "5.0.*",
@@ -40,6 +42,7 @@
         "symfony/yaml": "5.0.*"
     },
     "require-dev": {
+        "hautelook/alice-bundle": "^2.7",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.18",
         "symfony/profiler-pack": "*",
