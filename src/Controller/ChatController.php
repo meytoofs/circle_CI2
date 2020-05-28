@@ -46,9 +46,9 @@ class ChatController extends AbstractController
         ]);
     }
     /**
-     * @Route("/room/{id}", name="chat_show")
+     * @Route("/room/{id}", name="chat_show", methods={"GET"})
      */
-    public function show(Room $room, RoomRepository $repository, Message $message, Request $request, SerializerInterface $serializer, NormalizerInterface $normalizer)
+    public function show(Room $room, RoomRepository $repository, Request $request, SerializerInterface $serializer, NormalizerInterface $normalizer)
     {
         $displayMessage = $repository->findAll();
         $messageNormalises =  $normalizer->normalize($displayMessage, null, ['groups' => 'room:Message']); //Normalise mon groupe dans mon objet 'Message' en array pour éviter les circular Reference

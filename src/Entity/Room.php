@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Message;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\RoomRepository;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -144,6 +145,13 @@ class Room
     public function __toString()
     {
         return $this->title;
+    }
+
+    public function setCreationDate(\DateTimeInterface $creationDate): self
+    {
+        $this->creationDate = $creationDate;
+
+        return $this;
     }
     
 }
