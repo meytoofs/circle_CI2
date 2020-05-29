@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit IdeaProposition{% endblock %}
+
+{% block body %}
+    <h1>Edit IdeaProposition</h1>
+
+    {{ include('idea_proposition/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('idea_proposition_index') }}">back to list</a>
+
+    {{ include('idea_proposition/_delete_form.html.twig') }}
+{% endblock %}

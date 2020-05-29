@@ -27,6 +27,7 @@ class RegistrationFormType extends AbstractType
         ->add('country')
         ->add('password',PasswordType::class)
         ->add('confirmPassword',PasswordType::class)
+        
 
     ;
     }

@@ -2,9 +2,14 @@
 
 namespace App\Entity;
 
+use App\Entity\Room;
+use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\MessageRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+
+
 
 /**
  * @ORM\Entity(repositoryClass=MessageRepository::class)
@@ -94,5 +99,9 @@ class Message
         $this->room = $room;
 
         return $this;
+    }
+     public function __toString()
+    {
+        return $this->content;
     }
 }
