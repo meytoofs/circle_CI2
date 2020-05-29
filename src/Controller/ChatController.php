@@ -32,21 +32,21 @@ class ChatController extends AbstractController
             
         ]);
     }
-    // /**
-    //  * @Route("/room", name="room", methods={"GET"})
-    //  */
-    // public function room(UidExtension $uid2)
-    // {
-    //     $rooms = $this->getDoctrine()
-    //     ->getRepository(Room::class)
-    //     ->findAll();
-    //     return $this->render('chat/room.html.twig', [
-    //         'rooms' => $rooms,
+    /**
+     * @Route("/room", name="room", methods={"GET"})
+     */
+    public function room(): Response
+    {
+        $rooms = $this->getDoctrine()
+        ->getRepository(Room::class)
+        ->findAll();
+        return $this->render('chat/room.html.twig', [
+            'rooms' => $rooms,
 
     //     ]);
     // }
     /**
-     * @Route("/room/{id}", name="chat_show", defaults={"reactRouting": null})
+     * @Route("/room/{id}", name="chat_show")
      */
     public function show(Room $room, RoomRepository $repository, Message $message, Request $request, SerializerInterface $serializer, NormalizerInterface $normalizer)
     {
@@ -55,12 +55,15 @@ class ChatController extends AbstractController
         $json = json_encode($messageNormalises); //serialise l'array en JSON 
         $response = $this->json($displayMessage, 200, [], ['groups' => 'room:Message']);
         $response = new JsonResponse($json, 200, [], true);
-        return $this->render('chat/chat.html.twig');
+        return $this->render('chat/chat.html.twig', [
+            'messages' => $displayMessage,
+            'room' => $room,
+        ]);
     }
     /**
      * @Route("/new", name="room_news", methods={"GET", "POST"})
      */
-    public function new(Request $request) 
+    public function new(Request $request): Response
     {
         $room = new Room();
         $now = new DateTime();
@@ -71,14 +74,10 @@ class ChatController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($room);
             $entityManager->flush();
-
-            
-        }
-
-        return $this->render('chat/new.html.twig', [
+            return $this->render('chat/new.html.twig', [
             'room' => $room,
             'form' => $form->createView(),
         ]);
-    }
+    }}
 }
 
