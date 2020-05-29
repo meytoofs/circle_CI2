@@ -11,7 +11,7 @@ yarn install
 yarn build 
 php bin/console doctrine:database:create
 php bin/console doctrine:migration:migrate
-php bin/console symfony server:start
+symfony server:start
 ```
 
 Ce rendre sur http://localhost:8000/accueil
