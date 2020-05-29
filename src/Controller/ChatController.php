@@ -43,8 +43,8 @@ class ChatController extends AbstractController
         return $this->render('chat/room.html.twig', [
             'rooms' => $rooms,
 
-    //     ]);
-    // }
+        ]);
+    }
     /**
      * @Route("/room/{id}", name="chat_show", methods={"GET"})
      */

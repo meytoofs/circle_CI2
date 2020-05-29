@@ -141,16 +141,15 @@
             "ref": "8eb1cd0962ded6a6d6e1e5a9b6d3e888f9f94ff6"
         },
         "files": [
-            "config/packages/fos_ckeditor.yaml"
+            "./config/packages/fos_ckeditor.yaml"
         ]
+    },
     "fzaninotto/faker": {
         "version": "v1.9.1"
     },
     "gedmo/doctrine-extensions": {
         "version": "v2.4.41"
     },
-    "jms/metadata": {
-        "version": "2.1.0"
     "hautelook/alice-bundle": {
         "version": "2.1",
         "recipe": {
@@ -164,6 +163,9 @@
             "./config/packages/test/hautelook_alice.yaml",
             "./fixtures/.gitignore"
         ]
+    },
+    "jms/metadata": {
+        "version": "2.1.0"
     },
     "laminas/laminas-code": {
         "version": "3.4.1"

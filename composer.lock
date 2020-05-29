@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5a5deab34d8df7c345d6c91062b57771",
+    "content-hash": "c21699586b20efbc9d5dbd2f48fdd533",
     "packages": [
         {
             "name": "api-platform/api-pack",
@@ -44,16 +44,16 @@
         },
         {
             "name": "api-platform/core",
-            "version": "v2.5.5",
+            "version": "v2.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/core.git",
-                "reference": "fa9d8cac13a9a232eff738c6818499b07304ba21"
+                "reference": "d84282fd29cc16a4fac9be67fdd76ca247b94123"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/core/zipball/fa9d8cac13a9a232eff738c6818499b07304ba21",
-                "reference": "fa9d8cac13a9a232eff738c6818499b07304ba21",
+                "url": "https://api.github.com/repos/api-platform/core/zipball/d84282fd29cc16a4fac9be67fdd76ca247b94123",
+                "reference": "d84282fd29cc16a4fac9be67fdd76ca247b94123",
                 "shasum": ""
             },
             "require": {
@@ -191,7 +191,7 @@
                 "rest",
                 "swagger"
             ],
-            "time": "2020-04-21T14:00:17+00:00"
+            "time": "2020-05-28T15:07:16+00:00"
         },
         {
             "name": "behat/transliterator",
@@ -563,7 +563,6 @@
                 "doctrine",
                 "php"
             ],
-            
             "funding": [
                 {
                     "url": "https://www.doctrine-project.org/sponsorship.html",
@@ -856,7 +855,6 @@
                 "orm",
                 "persistence"
             ],
-            
             "funding": [
                 {
                     "url": "https://www.doctrine-project.org/sponsorship.html",
@@ -1992,6 +1990,34 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FOS\\CKEditorBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric GELOEN",
+                    "email": "geloen.eric@gmail.com"
+                },
+                {
+                    "name": "FriendsOfSymfony Community",
+                    "homepage": "https://github.com/FriendsOfSymfony/FOSCKEditorBundle/graphs/contributors"
+                }
+            ],
+            "description": "Provides a CKEditor integration for your Symfony project.",
+            "keywords": [
+                "CKEditor"
+            ],
+            "time": "2019-12-23T15:31:36+00:00"
+        },
+        {
             "name": "fzaninotto/faker",
             "version": "v1.9.1",
             "source": {
@@ -2021,7 +2047,6 @@
             },
             "autoload": {
                 "psr-4": {
-                    "FOS\\CKEditorBundle\\": "src/"
                     "Faker\\": "src/Faker/"
                 }
             },
@@ -2031,19 +2056,6 @@
             ],
             "authors": [
                 {
-                    "name": "Eric GELOEN",
-                    "email": "geloen.eric@gmail.com"
-                },
-                {
-                    "name": "FriendsOfSymfony Community",
-                    "homepage": "https://github.com/FriendsOfSymfony/FOSCKEditorBundle/graphs/contributors"
-                }
-            ],
-            "description": "Provides a CKEditor integration for your Symfony project.",
-            "keywords": [
-                "CKEditor"
-            ],
-            "time": "2019-12-23T15:31:36+00:00"
                     "name": "François Zaninotto"
                 }
             ],
@@ -2595,6 +2607,16 @@
                 "log",
                 "logging",
                 "psr-3"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/Seldaek",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-05-22T08:12:19+00:00"
         },
