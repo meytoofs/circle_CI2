@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IdeaProposition index{% endblock %}
+
+{% block body %}
+    <h1>IdeaProposition index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>TotalScore</th>
+                <th>Date</th>
+                <th>FeaturedImage</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for idea_proposition in idea_propositions %}
+            <tr>
+                <td>{{ idea_proposition.id }}</td>
+                <td>{{ idea_proposition.title }}</td>
+                <td>{{ idea_proposition.content }}</td>
+                <td>{{ idea_proposition.totalScore }}</td>
+                <td>{{ idea_proposition.date ? idea_proposition.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td> 
+                    <img width="40rem" src="/uploads/images/featured/{{ idea_proposition.featuredImage }}"></img>
+                </td>
+                <td>
+                    <a href="{{ path('idea_proposition_show', {'id': idea_proposition.id}) }}">show</a>
+                    <a href="{{ path('idea_proposition_edit', {'id': idea_proposition.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('idea_proposition_new') }}">Create new</a>
+{% endblock %}
