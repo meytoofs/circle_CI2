@@ -32,19 +32,19 @@ class ChatController extends AbstractController
             
         ]);
     }
-    /**
-     * @Route("/room", name="room", methods={"GET"})
-     */
-    public function room(UidExtension $uid2): Response
-    {
-        $rooms = $this->getDoctrine()
-        ->getRepository(Room::class)
-        ->findAll();
-        return $this->render('chat/room.html.twig', [
-            'rooms' => $rooms,
+    // /**
+    //  * @Route("/room", name="room", methods={"GET"})
+    //  */
+    // public function room(UidExtension $uid2)
+    // {
+    //     $rooms = $this->getDoctrine()
+    //     ->getRepository(Room::class)
+    //     ->findAll();
+    //     return $this->render('chat/room.html.twig', [
+    //         'rooms' => $rooms,
 
-        ]);
-    }
+    //     ]);
+    // }
     /**
      * @Route("/room/{id}", name="chat_show", defaults={"reactRouting": null})
      */
@@ -67,17 +67,18 @@ class ChatController extends AbstractController
         $form = $this->createForm(RoomType::class, $room);
         $form->handleRequest($request);
 
-        // if ($form->isSubmitted() && $form->isValid()) {
-        //     $entityManager = $this->getDoctrine()->getManager();
-        //     $entityManager->persist($room);
-        //     $entityManager->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($room);
+            $entityManager->flush();
 
-            return $this->redirectToRoute('room');
+            
         }
 
-        // return $this->render('chat/new.html.twig', [
-        //     'room' => $room,
-        //     'form' => $form->createView(),
-        // ]);
+        return $this->render('chat/new.html.twig', [
+            'room' => $room,
+            'form' => $form->createView(),
+        ]);
     }
+}
 

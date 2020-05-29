@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=RoomRepository::class)
  * @ApiResource(
- *      normalizationContext={"groups"={"room:Message"}})
+ *  normalizationContext={"groups"={"room:Message"}})
  */
 class Room
 {

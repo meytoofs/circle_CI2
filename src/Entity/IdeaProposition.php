@@ -6,9 +6,13 @@ use App\Repository\IdeaPropositionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=IdeaPropositionRepository::class)
+ * @Vich\Uploadable
  */
 class IdeaProposition
 {
@@ -35,7 +39,11 @@ class IdeaProposition
     private $totalScore;
 
     /**
+     *  @var \DateTime $creationDate
+     * 
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
+     * 
      */
     private $date;
 
@@ -48,6 +56,17 @@ class IdeaProposition
      * @ORM\OneToMany(targetEntity=NoteHistory::class, mappedBy="ideaProposition")
      */
     private $noteHistories;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    private $featuredImage;
+    /**
+     * @Vich\UploadableField(mapping="featured_images", fileNameProperty="featuredImage")
+     * @var File
+     */
+    private $imageFile;
 
     
 
@@ -103,12 +122,6 @@ class IdeaProposition
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): self
-    {
-        $this->date = $date;
-
-        return $this;
-    }
 
     public function getUser(): ?User
     {
@@ -151,6 +164,39 @@ class IdeaProposition
         }
 
         return $this;
+    }
+
+    public function getFeaturedImage()
+    {
+        return $this->featuredImage;
+    }
+
+    public function setFeaturedImage(string $featuredImage)
+    {
+        $this->featuredImage = $featuredImage;
+
+        return $this;
+    }
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->date = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+    public function __toString()
+    {
+        return $this->title;
     }
 
     
