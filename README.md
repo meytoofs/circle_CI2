@@ -11,6 +11,7 @@ yarn install
 yarn build 
 php bin/console doctrine:database:create
 php bin/console doctrine:migration:migrate
+php bin/console hautelook:fixtures:load
 symfony server:start
 ```
 
