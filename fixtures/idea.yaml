@@ -3,4 +3,3 @@ App\Entity\ideaProposition:
     content: <text(100)>
     title: <text(10)>
     total_score: <numberBetween(0, 100)>
-    date: <dateTimeBetween("-200 days", "now")>

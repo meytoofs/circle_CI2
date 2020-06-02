@@ -40,7 +40,7 @@ p {
 	transition-duration: 1s;
 	transition-timing-function: ease-in-put;
     font-weight: 200;
-    color :white;
+    color :black;
 }
 form {
 	padding: 20px 0;
