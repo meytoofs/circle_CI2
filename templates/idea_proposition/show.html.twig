@@ -29,7 +29,10 @@
             </tr>
             <tr>
                 <th>FeaturedImage</th>
-                <td>{{ idea_proposition.featuredImage }}</td>
+                <td>
+                    <img width="40rem" src="/uploads/images/featured/{{ idea_proposition.featuredImage }}"</img>
+                    <img src="{{ idea_proposition.featuredImage }}"></img>
+                </td>
             </tr>
         </tbody>
     </table>
