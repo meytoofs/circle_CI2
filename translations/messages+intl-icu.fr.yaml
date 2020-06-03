@@ -1,0 +1,34 @@
+# translations/messages+intl-icu.fr.yaml
+
+header:
+    index: Accueil
+    community: Communauté
+    marketplace: Marketplace
+    construction: (En construction)
+    chat: Chat
+    btnConnexion: Connexion
+    btnInscription: Inscription
+    btnDeconnexion: Déconnexion
+
+chat:
+    chatHeader: Bienvenue sur notre chat!
+    chatHeader2: Règles du chat.
+    btnChatLogout: Lire le chat sans connexion
+    regles: Règles
+
+chat_room:
+    list_room: Liste des rooms
+    tab_nom: Nom de la room
+    tab_type: Type de Room
+    tab_number: Nombre de personnes connecté
+    tab_heure: Heure du dernier message
+    btn_creer: Créer nouvel Room
+
+form_chat:
+    title: Créer une nouvelle Room
+    nom_room: Nom de la room*
+    type_room: Type de la room*
+    btnSave: Sauvegarder
+    btnBack: Revenir à la selection des Rooms
+    placeholder_nom: Exemple/ Mon idée de génie
+    placeholder_type: Débat / Fun / Autre..
