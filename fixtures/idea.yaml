@@ -3,3 +3,5 @@ App\Entity\ideaProposition:
     content: <text(100)>
     title: <text(10)>
     total_score: <numberBetween(0, 100)>
+    featuredImage: http://picsum.photos/id/<numberBetween(200,600)>/290/180
+    user: <name(5)>

@@ -177,3 +177,10 @@ form button:hover {
 .fa-spin {
 	margin: 0 auto;
 }
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat (3,1fr);
+	grid-gap: 20px;
+
+}

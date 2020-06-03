@@ -1,23 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}IdeaProposition index{% endblock %}
-
-
-    {% block body %}
-    <div class="container">
+{% block body %}
+    
         <h1 class="my-3">Nos idée</h1>
-        <div class="row">
-            {% for idea_proposition in idea_propositions %}
-                <div class="col-3 mb-3">
-                    <div class="border border-dark rounded p-2">
-                        <img width="200rem" height="200rem" src="/uploads/images/featured/{{ idea_proposition.featuredImage }}"></img>
-                        <h3>{{ idea_proposition.title }}</h3>
-                        <p>{{ idea_proposition.content }}</p>
-                        <h4>{{ idea_proposition.totalScore }}</h4>
-                        
-                    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <p>salut</p>
+
                 </div>
-            {% endfor %}
+                <div class="col-md-9">
+                    
+                        {% for idea_proposition in idea_propositions %}
+                            
+                                <div class="border border-dark rounded p-2">
+                                    <img width="400rem" height="400rem" src="{{ idea_proposition.featuredImage }}"></img>
+                                
+                                    <h5 class="card-title">{{ idea_proposition.title}}</h5>
+                                
+                                    <p>{{ idea_proposition.totalScore }}</p>
+
+                                    
+
+                                </div>
+
+                            
+                        {% endfor %}
+                          
+                                  
+                
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
