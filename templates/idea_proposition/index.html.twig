@@ -4,42 +4,30 @@
 
 {% block body %}
     <h1>IdeaProposition index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>TotalScore</th>
-                <th>Date</th>
-                <th>FeaturedImage</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for idea_proposition in idea_propositions %}
-            <tr>
-                <td>{{ idea_proposition.id }}</td>
-                <td>{{ idea_proposition.title }}</td>
-                <td>{{ idea_proposition.content }}</td>
-                <td>{{ idea_proposition.totalScore }}</td>
-                <td>{{ idea_proposition.date ? idea_proposition.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td> 
-                    <img width="40rem" src="/uploads/images/featured/{{ idea_proposition.featuredImage }}"></img>
-                </td>
-                <td>
-                    <a href="{{ path('idea_proposition_show', {'id': idea_proposition.id}) }}">show</a>
-                    <a href="{{ path('idea_proposition_edit', {'id': idea_proposition.id}) }}">edit</a>
-                </td>
-            </tr>
+    {% for idea_proposition in idea_propositions %}
+        <div class="quentin">
+            <div class="card">
+                <div class="face face1">
+                    <div class="content">
+                        <img width="80%" src="{{ idea_proposition.featuredImage }}"></img>
+                        <h2>{{ idea_proposition.title }}</h2>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <p>{{ idea_proposition.content }}</p>
+                        <a href="{{ path('idea_proposition_show', {'id': idea_proposition.id}) }}">Read More</a>
+                        <p id="total_score">Score: {{ idea_proposition.totalScore }}</p>
+                        <p id="user"> {{idea_proposition.user }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <p colspan="7">no records found</p>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
 
     <a href="{{ path('idea_proposition_new') }}">Create new</a>
 {% endblock %}
