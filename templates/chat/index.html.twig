@@ -5,14 +5,14 @@
 {% block body %}
 <section>
     <div class = "rules_chat">
-        <h1>Bienvenue sur notre chat !</h1>
-        <h2>Règles du chat:</h2>
+        <h1>{{ 'chat.chatHeader'|trans }}</h1>
+        <h2>{{ 'chat.chatHeader2'|trans }}</h2>
         <ul>
-            <li>Règles 1:</li>
+            <li>{{ 'chat.regles'|trans }} 1</li>
             <p>Ipsum velit ullamco labore culpa. Aliquip ea dolor et nulla laboris dolor ut dolore ullamco sunt aute anim. Cupidatat magna duis ex veniam amet. Aliquip exercitation aliqua nisi ea deserunt aute ipsum ullamco do laboris occaecat. Eiusmod elit minim officia consequat proident amet tempor esse. Ad duis id enim voluptate incididunt ex adipisicing proident ea. Officia incididunt consectetur Lorem voluptate nulla fugiat laborum adipisicing ex.</p>
-            <li>Règles2:</li>
+            <li>{{ 'chat.regles'|trans }} 2</li>
             <p>Ipsum velit ullamco labore culpa. Aliquip ea dolor et nulla laboris dolor ut dolore ullamco sunt aute anim. Cupidatat magna duis ex veniam amet. Aliquip exercitation aliqua nisi ea deserunt aute ipsum ullamco do laboris occaecat. Eiusmod elit minim officia consequat proident amet tempor esse. Ad duis id enim voluptate incididunt ex adipisicing proident ea. Officia incididunt consectetur Lorem voluptate nulla fugiat laborum adipisicing ex.</p>
-            <li>Règles3:</li>
+            <li>{{ 'chat.regles'|trans }} 3</li>
             <p>Ipsum velit ullamco labore culpa. Aliquip ea dolor et nulla laboris dolor ut dolore ullamco sunt aute anim. Cupidatat magna duis ex veniam amet. Aliquip exercitation aliqua nisi ea deserunt aute ipsum ullamco do laboris occaecat. Eiusmod elit minim officia consequat proident amet tempor esse. Ad duis id enim voluptate incididunt ex adipisicing proident ea. Officia incididunt consectetur Lorem voluptate nulla fugiat laborum adipisicing ex.</p>
         </ul>
     </div>
@@ -20,8 +20,8 @@
     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
     <a role="button" class="btn btn-outline-primary" href="{{ path('room') }}">Tchat !</a>
     {% else %}
-    <a role="button" class="btn btn-outline-primary" href="{{ path('app_login') }}">Connexion</a>
-    <a role="button" class="btn btn-outline-warning" href="{{ path('room') }}">Lire le chat sans Connexion</a>
+    <a role="button" class="btn btn-outline-primary" href="{{ path('app_login') }}">{{ 'header.btnConnexion'|trans }}</a>
+    <a role="button" class="btn btn-outline-warning" href="{{ path('room') }}">{{ 'chat.btnChatLogout'|trans }}</a>
     {% endif %}
     </div>
 </section>

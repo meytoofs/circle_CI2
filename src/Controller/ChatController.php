@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
 * @Route("/chat")
@@ -43,12 +44,12 @@ class ChatController extends AbstractController
         return $this->render('chat/room.html.twig', [
             'rooms' => $rooms,
 
-    //     ]);
-    // }
+        ]);
+    }
     /**
-     * @Route("/room/{id}", name="chat_show")
+     * @Route("/room/{id}", name="chat_show", methods={"GET"})
      */
-    public function show(Room $room, RoomRepository $repository, Message $message, Request $request, SerializerInterface $serializer, NormalizerInterface $normalizer)
+    public function show(Room $room, RoomRepository $repository, Request $request, SerializerInterface $serializer, NormalizerInterface $normalizer)
     {
         $displayMessage = $repository->findAll();
         $messageNormalises =  $normalizer->normalize($displayMessage, null, ['groups' => 'room:Message']); //Normalise mon groupe dans mon objet 'Message' en array pour éviter les circular Reference
@@ -63,10 +64,9 @@ class ChatController extends AbstractController
     /**
      * @Route("/new", name="room_news", methods={"GET", "POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, TranslatorInterface $translator): Response
     {
         $room = new Room();
-        $now = new DateTime();
         $form = $this->createForm(RoomType::class, $room);
         $form->handleRequest($request);
 
@@ -74,10 +74,14 @@ class ChatController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($room);
             $entityManager->flush();
-            return $this->render('chat/new.html.twig', [
+
+            return $this->redirectToRoute('room');
+        }
+
+        return $this->render('chat/new.html.twig', [
             'room' => $room,
             'form' => $form->createView(),
         ]);
-    }}
+    }
 }
 
