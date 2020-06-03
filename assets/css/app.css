@@ -42,6 +42,9 @@ p {
     font-weight: 200;
     color : black;
 }
+label {
+	float: left;
+}
 form {
 	padding: 20px 0;
 	position: relative;

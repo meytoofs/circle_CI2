@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RoomType extends AbstractType
 {
@@ -15,17 +16,19 @@ class RoomType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => false,
+                'label' => true,
                 'required' => true,
+                'label' => 'form_chat.nom_room',
                 'attr' => [
-                    'placeholder' => 'Nom de votre room'
+                    'placeholder' => 'form_chat.placeholder_nom',
                 ]
             ])
             ->add('type', TextType::class, [
-                'label' => false,
+                'label' => true,
                 'required' => true,
+                'label' => 'form_chat.type_room',
                 'attr' => [
-                    'placeholder' => 'Type de votre room'
+                    'placeholder' => 'form_chat.placeholder_type'
                 ]
             ])
         ;
