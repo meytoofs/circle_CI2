@@ -51,20 +51,26 @@ class IdeaPropositionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="idea_proposition_show", methods={"GET"})
+     * @Route("/{id}", name="idea_proposition_show", methods={"GET", "POST"})
      */
     public function show(Request $request, IdeaProposition $ideaProposition, NoteHistoryRepository $repository): Response
     {
         $id = $ideaProposition->getId();
         $total_score = $repository->getAVG($id);
-
-        $form = $this->createForm(VoteType::class, $ideaProposition);
+        $note = new NoteHistory();
+        $note->setIdeaProposition($ideaProposition);
+        $form = $this->createForm(VoteType::class, $note, [
+            // 'id' => $id,
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($note);
+            $entityManager->flush();
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('idea_proposition_show');
+            return $this->redirectToRoute('idea_proposition_index');
         }
         return $this->render('idea_proposition/show.html.twig', [
             'idea_proposition' => $ideaProposition,
