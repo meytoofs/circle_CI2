@@ -41,6 +41,7 @@ class ChatController extends AbstractController
         $rooms = $this->getDoctrine()
         ->getRepository(Room::class)
         ->findAll();
+        $this->isGranted('POST_EDIT', $rooms);
         return $this->render('chat/room.html.twig', [
             'rooms' => $rooms,
 

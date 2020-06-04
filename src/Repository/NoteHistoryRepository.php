@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\NoteHistory;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Repository\NoteHistoryRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method NoteHistory|null find($id, $lockMode = null, $lockVersion = null)
@@ -18,7 +19,21 @@ class NoteHistoryRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, NoteHistory::class);
     }
-
+    
+    public function getAVG($id)
+    {
+        $result = $this
+        ->createQueryBuilder('n')
+        ->select("avg(n.score)")
+        ->where('n.ideaProposition = :id')
+        ->setParameter('id', $id)
+        ->getQuery()
+        ->getSingleResult();
+        if ($result[1]){
+            return $result[1];
+        }
+        return 0;
+    }
     // /**
     //  * @return NoteHistory[] Returns an array of NoteHistory objects
     //  */
