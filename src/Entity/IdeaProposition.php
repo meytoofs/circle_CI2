@@ -108,6 +108,7 @@ class IdeaProposition
     public function getTotalScore(): ?int
     {
         return $this->totalScore;
+        
     }
 
     public function setTotalScore(int $totalScore): self

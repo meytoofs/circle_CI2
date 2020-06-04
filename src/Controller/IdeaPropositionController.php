@@ -60,8 +60,10 @@ class IdeaPropositionController extends AbstractController
     /**
      * @Route("/{id}/edit", name="idea_proposition_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, IdeaProposition $ideaProposition): Response
+    public function edit(IdeaProposition $idea, Request $request, IdeaProposition $ideaProposition): Response
     {
+        $this->denyAccessUnlessGranted('edit', $idea);
+
         $form = $this->createForm(IdeaPropositionType::class, $ideaProposition);
         $form->handleRequest($request);
 
