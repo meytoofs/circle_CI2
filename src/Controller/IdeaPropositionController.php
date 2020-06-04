@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\IdeaProposition;
 use App\Form\IdeaPropositionType;
+use App\Form\VoteType;
 use App\Repository\IdeaPropositionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,10 +51,19 @@ class IdeaPropositionController extends AbstractController
     /**
      * @Route("/{id}", name="idea_proposition_show", methods={"GET"})
      */
-    public function show(IdeaProposition $ideaProposition): Response
+    public function show(Request $request, IdeaProposition $ideaProposition): Response
     {
+        $form = $this->createForm(VoteType::class, $ideaProposition);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('idea_proposition_show');
+        }
         return $this->render('idea_proposition/show.html.twig', [
             'idea_proposition' => $ideaProposition,
+            'form' => $form->createView(),
         ]);
     }
 
