@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\IdeaProposition;
+use App\Entity\NoteHistory;
 use App\Form\IdeaPropositionType;
+use App\Form\VoteType;
 use App\Repository\IdeaPropositionRepository;
+use App\Repository\NoteHistoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -50,10 +53,23 @@ class IdeaPropositionController extends AbstractController
     /**
      * @Route("/{id}", name="idea_proposition_show", methods={"GET"})
      */
-    public function show(IdeaProposition $ideaProposition): Response
+    public function show(Request $request, IdeaProposition $ideaProposition, NoteHistoryRepository $repository): Response
     {
+        $id = $ideaProposition->getId();
+        $total_score = $repository->getAVG($id);
+
+        $form = $this->createForm(VoteType::class, $ideaProposition);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('idea_proposition_show');
+        }
         return $this->render('idea_proposition/show.html.twig', [
             'idea_proposition' => $ideaProposition,
+            'form' => $form->createView(),
+            'total_score' => $total_score,
         ]);
     }
 
