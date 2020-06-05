@@ -21,10 +21,15 @@ class IdeaPropositionController extends AbstractController
     /**
      * @Route("/", name="idea_proposition_index", methods={"GET"})
      */
-    public function index(IdeaPropositionRepository $ideaPropositionRepository): Response
+    public function index(IdeaPropositionRepository $repository): Response
     {
+        $query = 
+        $ideas = $this->getDoctrine()
+        ->getRepository(IdeaProposition::class)
+        ->findall();
+        
         return $this->render('idea_proposition/index.html.twig', [
-            'idea_propositions' => $ideaPropositionRepository->findAll(),
+            'idea_propositions' => $ideas,
         ]);
     }
 

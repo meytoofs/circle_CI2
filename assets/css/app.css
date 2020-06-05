@@ -255,7 +255,7 @@ form button:hover {
 	color: #fff;
 	transition: 0.5s;
 }
-#total_score{
+#avg{
 	margin: 15px 0 0;
     display: inline-block;
     text-decoration: none;
@@ -362,4 +362,7 @@ body > div.delwar > div.test1 > div.content > div.vote-container > div.face.face
 	background: white;
 	border: 2px solid black;
 	color: black;
+}
+#vote > div:nth-child(2){
+	display: none;
 }
