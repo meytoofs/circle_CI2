@@ -18,7 +18,17 @@ class IdeaPropositionRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, IdeaProposition::class);
     }
-
+    public function getAllSVG()
+    {
+        $result = $this
+        ->createQueryBuilder('i')
+        ->select('i')
+        ->join('i.noteHistories', 'n')
+        ->where('n.ideaProposition = i.id')
+        ->getQuery()
+        ->getResult();
+        return $result;
+    }
     // /**
     //  * @return IdeaProposition[] Returns an array of IdeaProposition objects
     //  */

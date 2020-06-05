@@ -17,7 +17,7 @@
                     <div class="content">
                         <p>{{ idea_proposition.content }}</p>
                         <a href="{{ path('idea_proposition_show', {'id': idea_proposition.id}) }}">Read More</a>
-                        <p id="total_score">Score: {{ idea_proposition.totalScore }}</p>
+                        <p id="avg">Moyenne: {{ idea_proposition.avg }}</p>
                         <p id="user"> {{idea_proposition.user }}</p>
                     </div>
                 </div>
