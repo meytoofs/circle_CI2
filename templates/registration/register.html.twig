@@ -1,5 +1,6 @@
 {% extends "base.html.twig" %}
 {% block body %}
+
 <h1>{{'form_inscription.title'|trans }}</h1>
 
 {{form_start(registrationForm,{'attr': {'novalidate': 'novalidate'}})}} 
@@ -16,4 +17,6 @@
 
 <button type="submit" class="btn btn-primary">{{ 'form_inscription.btn_registration'|trans }}</button>
 {{ form_end(registrationForm) }} 
+
+
 {% endblock %}
