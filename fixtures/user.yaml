@@ -1,0 +1,11 @@
+# App\Entity\user:
+#   user_{1..10}:
+#     username: <username()>
+#     password: <password()>
+#     confirm_password: <password()>
+#     first_name: <firstName()>
+#     last_name: <lastName()>
+#     email: <email()>
+#     adress: <text(10)> 
+#     city: <city()>
+#     country: <country()>
