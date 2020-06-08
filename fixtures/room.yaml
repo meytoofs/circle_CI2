@@ -1,0 +1,5 @@
+App\Entity\Room:
+  room_{1..100}:  
+    title: <text(10)>
+    type: <text(10)>
+   
