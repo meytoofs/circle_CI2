@@ -32,7 +32,7 @@ class RegistrationController extends AbstractController
             $em->flush();
             $this->addFlash(
                 'confirmation',
-                'merci de votre inscription');
+                'merci pour votre inscription');
             $email = new Email();
             $email->from('aida.djoudi@gmail.com')
             ->to($user->getEmail())
