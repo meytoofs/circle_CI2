@@ -180,6 +180,13 @@ form button:hover {
 .fa-spin {
 	margin: 0 auto;
 }
+.container-idea {
+	display: flex;
+	flex-wrap: wrap;
+}
+.quentin {
+	width: 25%;
+}
 .quentin .card {
 	position: relative;
 }

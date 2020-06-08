@@ -4,30 +4,32 @@
 
 {% block body %}
     <h1>IdeaProposition index</h1>
-    {% for idea_proposition in idea_propositions %}
-        <div class="quentin">
-            <div class="card">
-                <div class="face face1">
-                    <div class="content">
-                        <img width="80%" src="{{ idea_proposition.featuredImage }}"></img>
-                        <h2>{{ idea_proposition.title }}</h2>
+    <div class="container-idea">
+        {% for idea_proposition in idea_propositions %}
+            <div class="quentin">
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <img width="80%" src="{{ idea_proposition.featuredImage }}"></img>
+                            <h2>{{ idea_proposition.title }}</h2>
+                        </div>
                     </div>
-                </div>
-                <div class="face face2">
-                    <div class="content">
-                        <p>{{ idea_proposition.content }}</p>
-                        <a href="{{ path('idea_proposition_show', {'id': idea_proposition.id}) }}">Read More</a>
-                        <p id="avg">Moyenne: {{ idea_proposition.avg }}</p>
-                        <p id="user"> {{idea_proposition.user }}</p>
+                    <div class="face face2">
+                        <div class="content">
+                            <p>{{ idea_proposition.content }}</p>
+                            <a href="{{ path('idea_proposition_show', {'id': idea_proposition.id}) }}">Read More</a>
+                            <p id="avg">Moyenne: {{ idea_proposition.avg }}</p>
+                            <p id="user"> {{idea_proposition.user }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         {% else %}
             <tr>
                 <p colspan="7">no records found</p>
             </tr>
         {% endfor %}
+    </div>
 
     <a href="{{ path('idea_proposition_new') }}">Create new</a>
 {% endblock %}
