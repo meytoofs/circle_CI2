@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}IdeaProposition index{% endblock %}
-
 {% block body %}
+<<<<<<< HEAD
     <h1>IdeaProposition index</h1>
     <div class="container-idea">
         {% for idea_proposition in idea_propositions %}
@@ -32,4 +32,59 @@
     </div>
 
     <a href="{{ path('idea_proposition_new') }}">Create new</a>
+=======
+    
+        <h1 class="my-3">Nos idée</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <p>salut</p>
+
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <p>{{ idea_proposition.content }}</p>
+                        <a href="{{ path('idea_proposition_show', {'id': idea_proposition.id}) }}">Read More</a>
+                        <p id="avg">Moyenne: {{ idea_proposition.avg }}</p>
+                        <p id="user"> {{idea_proposition.user }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+>>>>>>> d716960cfa403f0c2d3245efc0a4e8d1ae85f3b3
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   

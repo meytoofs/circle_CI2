@@ -3,9 +3,9 @@
 {% block title %}New IdeaProposition{% endblock %}
 
 {% block body %}
-    <h1>Create new IdeaProposition</h1>
+    <h1>création d'une nouvelle idée</h1>
 
-    {{ include('idea_proposition/_form.html.twig') }}
+    {{ include('idea_proposition/form.html.twig') }}
 
-    <a href="{{ path('idea_proposition_index') }}">back to list</a>
+    <a href="{{ path('idea_proposition_index') }}">voir tout les idées</a>
 {% endblock %}
