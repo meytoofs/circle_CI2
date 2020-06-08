@@ -21,7 +21,7 @@
                     <div class="navbar-nav  d-flex flex-row bd-highlight mb-3">
                         <a class="nav-item nav-link active" href={{ path('accueil') }}>{{ 'header.index'|trans }}<span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link" href={{ path('idea_proposition_index') }}>{{ 'header.community'|trans }}</a>
-                        <a class="nav-item nav-link" href="#">{{ 'header.marketplace'|trans }}</br><i>{{ 'header.construction'|trans }}</i></a>
+                        <a class="nav-item nav-link" href="{{' https://127.0.0.1:8001'}}">{{ 'header.marketplace'|trans }}</br><i>{{ 'header.construction'|trans }}</i></a>
                         <a class="nav-item nav-link" href={{ path('rule') }}>{{ 'header.chat'|trans }}</a>
                     </div>
                     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}

@@ -30,17 +30,17 @@ class RegistrationController extends AbstractController
             $em=$this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            $email = new Email();
-            $email->from('aida.djoudi@gmail.com')
-            ->to($user->getEmail())
-            ->cc('bar@example.com')
-            ->bcc('baz@example.com')
-            ->replyTo('fabien@symfony.com')
-            ->priority(Email::PRIORITY_HIGH)
-            ->subject('Important Notification')
-            ->text('salut')
-            ->html('<h1>bienvenu</h1> <p>merci de votre inscription</p>');
-            $mailer->send($email);
+            // $email = new Email();
+            // $email->from('aida.djoudi@gmail.com')
+            // ->to($user->getEmail())
+            // ->cc('bar@example.com')
+            // ->bcc('baz@example.com')
+            // ->replyTo('fabien@symfony.com')
+            // ->priority(Email::PRIORITY_HIGH)
+            // ->subject('Important Notification')
+            // ->text('salut')
+            // ->html('<h1>bienvenu</h1> <p>merci de votre inscription</p>');
+            // $mailer->send($email);
 
 
 
