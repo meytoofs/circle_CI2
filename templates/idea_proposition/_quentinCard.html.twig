@@ -1,0 +1,18 @@
+<div class="quentin">
+    <div class="card">
+        <div class="face face1">
+            <div class="content">
+                <img src="{{ idea_proposition.featuredImage }}"></img>
+                <h2>{{ idea_proposition.title }}</h2>
+            </div>
+        </div>
+        <div class="face face2">
+            <div class="content">
+                <p>{{ idea_proposition.content }}</p>
+                <a href="{{ path('idea_proposition_show', {'id': idea_proposition.id}) }}">Read More</a>
+                <p id="avg">Moyenne: {{ idea_proposition.avg }}</p>
+                <p id="user"> {{idea_proposition.user }}</p>
+            </div>
+        </div>
+    </div>
+</div>

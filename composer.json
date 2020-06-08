@@ -9,6 +9,7 @@
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "easycorp/easyadmin-bundle": "^2.3",
         "friendsofsymfony/ckeditor-bundle": "^2.2",
+        "knplabs/knp-paginator-bundle": "^5.2",
         "limenius/react-bundle": "^5.0",
         "mbezhanov/faker-provider-collection": "^1.2",
         "sensio/framework-extra-bundle": "^5.5",
