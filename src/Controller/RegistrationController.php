@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
+use Symfony\Contracts\Translation\TranslatorInterface;
 class RegistrationController extends AbstractController
 {
     /**
@@ -30,6 +30,9 @@ class RegistrationController extends AbstractController
             $em=$this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+            $this->addFlash(
+                'confirmation',
+                'merci pour votre inscription');
             $email = new Email();
             $email->from('aida.djoudi@gmail.com')
             ->to($user->getEmail())
@@ -41,6 +44,7 @@ class RegistrationController extends AbstractController
             ->text('salut')
             ->html('<h1>bienvenu</h1> <p>merci de votre inscription</p>');
             $mailer->send($email);
+           
 
 
 

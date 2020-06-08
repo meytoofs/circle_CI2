@@ -1,17 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}IdeaProposition index{% endblock %}
-
 {% block body %}
-    <h1>IdeaProposition index</h1>
-    {% for idea_proposition in idea_propositions %}
-        <div class="quentin">
-            <div class="card">
-                <div class="face face1">
-                    <div class="content">
-                        <img width="80%" src="{{ idea_proposition.featuredImage }}"></img>
-                        <h2>{{ idea_proposition.title }}</h2>
-                    </div>
+    
+        <h1 class="my-3">Nos idée</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <p>salut</p>
+
                 </div>
                 <div class="face face2">
                     <div class="content">
@@ -23,11 +20,39 @@
                 </div>
             </div>
         </div>
-        {% else %}
-            <tr>
-                <p colspan="7">no records found</p>
-            </tr>
-        {% endfor %}
-
-    <a href="{{ path('idea_proposition_new') }}">Create new</a>
+    </div>
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
