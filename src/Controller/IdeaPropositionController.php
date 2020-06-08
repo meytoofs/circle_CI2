@@ -23,13 +23,13 @@ class IdeaPropositionController extends AbstractController
      */
     public function index(IdeaPropositionRepository $repository): Response
     {
-        $query = 
+        
         $ideas = $this->getDoctrine()
         ->getRepository(IdeaProposition::class)
         ->findall();
         
         return $this->render('idea_proposition/index.html.twig', [
-            'idea_propositions' => $ideas,
+            'idea_proposition' => $ideas,
         ]);
     }
 
