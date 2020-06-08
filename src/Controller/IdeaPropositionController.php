@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Data\SearchData;
 use App\Entity\IdeaProposition;
 use App\Entity\NoteHistory;
 use App\Form\IdeaPropositionType;
+use App\Form\SearchDataType;
+use App\Form\SearchForm;
 use App\Form\VoteType;
 use App\Repository\IdeaPropositionRepository;
 use App\Repository\NoteHistoryRepository;
@@ -21,15 +24,24 @@ class IdeaPropositionController extends AbstractController
     /**
      * @Route("/", name="idea_proposition_index", methods={"GET"})
      */
-    public function index(IdeaPropositionRepository $repository): Response
+    public function index(IdeaPropositionRepository $repository, Request $request): Response
     {
-        
+        $data = new SearchData();
+        $data->page = $request->get('page', 1);
+        $form = $this->createForm(SearchDataType::class, $data);
+        $form-> handleRequest($request);
+        [$min, $max] = $repository->findMinMax($data);
+        $idea = $repository->findSearch($data);
         $ideas = $this->getDoctrine()
         ->getRepository(IdeaProposition::class)
         ->findall();
         
         return $this->render('idea_proposition/index.html.twig', [
-            'idea_proposition' => $ideas,
+            'idea_propositions' => $ideas,
+            'idea_propositions' => $idea,
+            'form' => $form->createView(),
+            'min' => $min,
+            'max' => $max,
         ]);
     }
 

@@ -1,10 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
- * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	font-weight: 300;
-}
+
 body {
 	font-family: 'Source Sans Pro', sans-serif;
 	color: black;
@@ -31,10 +26,7 @@ p {
 
 	transform: translateY(85px);
 }
-.container {
-	width: 100%;
-	text-align: center;
-}
+
 .container h1 {
 	font-size: 40px;
 	transition-duration: 1s;
@@ -180,6 +172,18 @@ form button:hover {
 .fa-spin {
 	margin: 0 auto;
 }
+.container-idea {
+	display: flex;
+	flex-wrap: wrap;
+}
+.quentin {
+	width: 100%;
+}
+.search{
+	height: 100%;
+	width: 15%;
+	padding-right: 20px;
+}
 .quentin .card {
 	position: relative;
 }
@@ -187,6 +191,11 @@ form button:hover {
 	width: 300px;
 	height: 200px;
 	transition: 0.5s;
+}
+#moi{
+	width: 85%;
+	display: flex;
+	flex-wrap: wrap;
 }
 .quentin .card .face.face1 {
 	position: relative;
@@ -202,7 +211,12 @@ form button:hover {
 	background: #fe9801;
 	transform: translateY(0);
 }
+.quentin .card .face.face1 .content {
+	width: 58%;
+}
 .quentin .card .face.face1 .content img {
+	height: 80%;
+	width: 100%;
 	transition: 0.5s;
 }
 .quentin .card:hover .face.face1 .content {
@@ -365,4 +379,14 @@ body > div.delwar > div.test1 > div.content > div.vote-container > div.face.face
 }
 #vote > div:nth-child(2){
 	display: none;
+}
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 20px;
+}
+.filter {
+	display: block;
+	position: sticky;
+	top: 20px;
 }
