@@ -6,6 +6,7 @@ import Home from './components/Home';
 import noUiSlider from 'nouislider'
 import 'nouislider/distribute/nouislider.css'
 
+
 const slider = document.getElementById('price-slider');
 
 if (slider) {
@@ -33,7 +34,7 @@ if (slider) {
         console.log(values, handle)
     })
 }
-
+ReactDOM.render(<Router><Home /></Router>, document.getElementById('root'));
 const onclick = document.getElementById('onclick')
 onclick.addEventListener('click',function display_vote() {
     var display = document.getElementById('display')
@@ -53,6 +54,3 @@ function display_vote() {
         display.style.display = "none"
     }
 }
-
-ReactDOM.render(<Router><Home /></Router>, document.getElementById('root'));
-
