@@ -55,3 +55,4 @@ function display_vote() {
 }
 
 ReactDOM.render(<Router><Home /></Router>, document.getElementById('root'));
+

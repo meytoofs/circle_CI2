@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\IdeaProposition;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,11 +15,10 @@ class IdeaPropositionType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('content')
+            ->add('content', CKEditorType::class)
+            ->add('imageFile', VichImageType::class)
             
-           
-            ->add('imageFile',VichImageType::class)
-            ->add('user')
+            
         ;
     }
 
