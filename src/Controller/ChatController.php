@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
 * @Route("/chat")
@@ -40,6 +41,7 @@ class ChatController extends AbstractController
         $rooms = $this->getDoctrine()
         ->getRepository(Room::class)
         ->findAll();
+        $this->isGranted('POST_EDIT', $rooms);
         return $this->render('chat/room.html.twig', [
             'rooms' => $rooms,
 
@@ -63,7 +65,7 @@ class ChatController extends AbstractController
     /**
      * @Route("/new", name="room_news", methods={"GET", "POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, TranslatorInterface $translator): Response
     {
         $room = new Room();
         $form = $this->createForm(RoomType::class, $room);

@@ -3,43 +3,25 @@
 {% block title %}IdeaProposition index{% endblock %}
 
 {% block body %}
-    <h1>IdeaProposition index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>TotalScore</th>
-                <th>Date</th>
-                <th>FeaturedImage</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for idea_proposition in idea_propositions %}
-            <tr>
-                <td>{{ idea_proposition.id }}</td>
-                <td>{{ idea_proposition.title }}</td>
-                <td>{{ idea_proposition.content }}</td>
-                <td>{{ idea_proposition.totalScore }}</td>
-                <td>{{ idea_proposition.date ? idea_proposition.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td> 
-                    <img width="40rem" src="/uploads/images/featured/{{ idea_proposition.featuredImage }}"></img>
-                </td>
-                <td>
-                    <a href="{{ path('idea_proposition_show', {'id': idea_proposition.id}) }}">show</a>
-                    <a href="{{ path('idea_proposition_edit', {'id': idea_proposition.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('idea_proposition_new') }}">Create new</a>
+    <h1>Toutes nos idées créer par la communauté</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                {% include 'idea_proposition/_filter.html.twig' with {form: form, min: min, max: max} only%}
+            </div>
+            <div class="col-md-10">
+                <div class="grid">
+                    {% for idea_proposition in idea_propositions %}
+                        {%include 'idea_proposition/_quentinCard.html.twig' %}
+                    {% else %}
+                </div>
+            </div>
+                <tr>
+                    <p colspan="7">no records found</p>
+                </tr>
+            {% endfor %}
+        <div style="margin-top: 4rem;">
+            {{ knp_pagination_render(idea_propositions)}}
+        </div>
+    </div>
 {% endblock %}

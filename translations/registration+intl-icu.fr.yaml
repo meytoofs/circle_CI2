@@ -1,0 +1,26 @@
+form_inscription:
+    title: inscription sur le site
+    username: pseudo
+    placeholder_username: Nom de famille
+    lastname: Nom de famille
+    placeholder_lastname: last name
+    firstname: Prénom
+    placeholder_firstname: Prénom
+    email: email
+    placeholder_email: exemple@gmail.com
+    adress: adresse
+    placeholder_adress: adresse
+    city: ville
+    placeholder_city: ville
+    country: pays
+    placeholder_country: pays
+    password: Mot de passe
+    placeholder_password: Mot de passe
+    password_confirm: Confirmation du mot de passe
+    placeholder_password_confirm: Répétez votre mot de passe
+    btn_registration: inscription
+
+
+
+
+

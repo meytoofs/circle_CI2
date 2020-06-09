@@ -19,29 +19,29 @@
                 </button>
                 <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavAltMarkup">
                     <div class="navbar-nav  d-flex flex-row bd-highlight mb-3">
-                        <a class="nav-item nav-link active" href={{ path('accueil') }}>Accueil <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href={{ path('idea_proposition_index') }}>Communauté</a>
-                        <a class="nav-item nav-link" href="#">Marketplace </br><i>(En construction)</i></i></a>
-                        <a class="nav-item nav-link" href={{ path('rule') }}>Chat</a>
+                        <a class="nav-item nav-link active" href={{ path('accueil') }}>{{ 'header.index'|trans }}<span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href={{ path('idea_proposition_index') }}>{{ 'header.community'|trans }}</a>
+                        <a class="nav-item nav-link" href="#">{{ 'header.marketplace'|trans }}</br><i>{{ 'header.construction'|trans }}</i></a>
+                        <a class="nav-item nav-link" href={{ path('rule') }}>{{ 'header.chat'|trans }}</a>
                     </div>
                     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                     <div class="d-flex flex-row-reverse bd-highlight">
-                        <a class="nav-item nav-link" href={{ path('app_logout') }}>Se déconnecter</a>
+                        <a class="nav-item nav-link" href={{ path('app_logout') }}>{{ 'header.btnDeconnexion'|trans }}</a>
                         <a class ="nav-item nav-link" href="#">
                             <img src="https://img.icons8.com/carbon-copy/100/000000/shopping-cart-loaded.png" style="width: 50%; height: 81%;"/>
                         </a>
                     </div>
                     {% else %}
                     <div class ="d-flex flex-row-reverse bd-highlight">                            
-                        <a class="nav-item nav-link" href="{{ path('app_login') }}">Se connecter</a>
-                        <a class="nav-item nav-link" href="{{ path('app_register') }}">S'inscrire</a>
+                        <a class="nav-item nav-link" href="{{ path('app_login') }}">{{ 'header.btnConnexion'|trans }}</a>
+                        <a class="nav-item nav-link" href="{{ path('app_register') }}">{{ 'header.btnInscription'|trans }}</a>
                     </div>
                     {% endif %}
                 </div>
         </div>
     </nav>
         </header>
-        <div class="container"> 
+        
         {% endblock %}
         {% block body %}{% endblock %}
         {% block javascripts %}
@@ -50,6 +50,10 @@
             <!-- Renders app.js & a webpack runtime.js file
                 <script src="/build/runtime.js"></script>
                 <script src="/build/app.js"></script> -->
+
+
+
+                
         {% endblock %}
     </body>
 </html>
