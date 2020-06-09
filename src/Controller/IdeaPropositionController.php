@@ -32,15 +32,14 @@ class IdeaPropositionController extends AbstractController
         $form-> handleRequest($request);
         [$min, $max] = $repository->findMinMax($data);
         $idea = $repository->findSearch($data);
-        $ideas = $this->getDoctrine()
-        ->getRepository(IdeaProposition::class)
-        ->findall();
+        $ideas = $this->getDoctrine()->getRepository(IdeaProposition::class)->findAll();
         return $this->render('idea_proposition/index.html.twig', [
             'idea_propositions' => $ideas,
             'idea_propositions' => $idea,
             'form' => $form->createView(),
             'min' => $min,
             'max' => $max,
+            
         ]);
     }
 
