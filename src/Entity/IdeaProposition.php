@@ -113,19 +113,23 @@ class IdeaProposition
     public function getTotal()
     {
         $total = 0;
+        
         foreach($this->getNoteHistories() as $history)
         {
             $total += $history->getScore();
         }
         return $total;
     }
+
     public function getAvg(){
         $total = count($this->getNoteHistories());
+        
         if ($total == 0){
             return 0;
         }
         return $this->getTotal() / $total;
     }
+    
     public function setTotalScore(int $totalScore): self
     {
         $this->totalScore = $totalScore;

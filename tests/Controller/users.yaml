@@ -1,0 +1,11 @@
+# App\Entity\user:
+#   user_user:
+#     username: "douda"
+#     password: "\\$2y\\$10\\$CPl1KofEgN9i/D/RWV5YL.iDoJluOovTprjGWzpv/ccVWPB4sJwKq"
+#     confirm_password: "\\$2y\\$10\\$CPl1KofEgN9i/D/RWV5YL.iDoJluOovTprjGWzpv/ccVWPB4sJwKq"
+#     first_name: "aida"
+#     last_name: "djoudi"
+#     email: "aida@gmail.fr"
+#     adress: "333rue "
+#     city: "chambery"
+#     country: "chambery"

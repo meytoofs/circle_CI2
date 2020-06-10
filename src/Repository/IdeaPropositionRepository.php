@@ -51,13 +51,13 @@ class IdeaPropositionRepository extends ServiceEntityRepository
     }
     if  (!empty($search->min)) {
         $query = $query
-            ->andWhere('i.totalScore >= :q')
-            ->setParameter('q', "%{$search->q}%");
+            ->andWhere('i.totalScore >= :min')
+            ->setParameter('min', "%{$search->min}%");
     }
     if  (!empty($search->max)) {
         $query = $query
-            ->andWhere('i.totalScore <= :q')
-            ->setParameter('q', "%{$search->q}%");
+            ->andWhere('i.totalScore <= :max')
+            ->setParameter('max', "%{$search->max}%");
     }
         $query = $this->getSearchQuery($search)->getQuery();
         return $this->paginator->paginate(
@@ -78,18 +78,18 @@ class IdeaPropositionRepository extends ServiceEntityRepository
     }
     if  (!empty($search->min)) {
         $query = $query
-            ->andWhere('i.totalScore >= :q')
-            ->setParameter('q', "%{$search->q}%");
+            ->andWhere('i.totalScore >= :min')
+            ->setParameter('min', "%{$search->min}%");
     }
     if  (!empty($search->max)) {
         $query = $query
-            ->andWhere('i.totalScore <= :q')
-            ->setParameter('q', "%{$search->q}%");
+            ->andWhere('i.totalScore <= :max')
+            ->setParameter('max', "%{$search->max}%");
     }
         return $query;
     }
     /**
-     * Récupère le prix minimum et maximum correspondant a une recherche
+     * Récupère le score minimum et maximum correspondant a une recherche
      * @return integer[]
      */
     public function findMinMax(SearchData $search): array

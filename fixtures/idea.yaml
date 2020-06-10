@@ -4,3 +4,7 @@ App\Entity\ideaProposition:
     title: <text(10)>
     total_score: <numberBetween(0, 100)>
     featured_image: http://picsum.photos/id/<numberBetween(200,600)>/290/180
+<<<<<<< HEAD
+=======
+    
+>>>>>>> a860dfa2cce3a072759cbd459fb5760e1c32379c
