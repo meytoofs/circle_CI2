@@ -1,4 +1,4 @@
-# translations/messages+intl-icu.fr.yaml
+# translations/messages+intl-icu.en.yaml
 
 header:
     index: Home
@@ -32,3 +32,33 @@ form_chat:
     btnBack: Back to the list of rooms
     placeholder_nom: Exemple/ My genius idea
     placeholder_type: Debate / Fun / Other..
+
+# translations de formulaire enregistrement en anglais
+
+form_inscription:
+    title: the inscription in the site
+    username: username
+    placeholder_username: username
+    lastname: last name
+    placeholder_lastname: last name
+    firstname: first name
+    placeholder_firstname: first name
+    email: email
+    placeholder_email: exemple@gmail.com
+    adress: adress
+    placeholder_adress: adress
+    city: city
+    placeholder_city: city
+    country: country
+    placeholder_country: country
+    password: password
+    placeholder_password: password
+    password_confirm: password_confirm
+    placeholder_password_confirm: please repeat your password
+    btn_registration: register
+# translations de login  en anglais
+login:
+    title:  Please sign in
+    username: Username
+    password: password
+    btn_login: Sign in

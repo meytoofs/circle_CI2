@@ -15,7 +15,7 @@ class IdeaPropositionType extends AbstractType
         $builder
             ->add('title')
             ->add('content')
-            ->add('totalScore')
+            
            
             ->add('imageFile',VichImageType::class)
             ->add('user')

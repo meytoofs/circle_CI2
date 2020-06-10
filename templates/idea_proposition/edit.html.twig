@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edit IdeaProposition</h1>
 
-    {{ include('idea_proposition/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('idea_proposition/form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('idea_proposition_index') }}">back to list</a>
 
-    {{ include('idea_proposition/_delete_form.html.twig') }}
+    {{ include('idea_proposition/delete_form.html.twig') }}
 {% endblock %}

@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\NoteHistory;
-use App\Repository\NoteHistoryRepository;
+
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
@@ -29,7 +29,7 @@ class NoteHistoryRepository extends ServiceEntityRepository
         ->setParameter('id', $id)
         ->getQuery()
         ->getSingleResult();
-        if ($result[1]){
+        if ($result){
             return $result[1];
         }
         return 0;

@@ -167,6 +167,12 @@
     "jms/metadata": {
         "version": "2.1.0"
     },
+    "knplabs/knp-components": {
+        "version": "v2.3.5"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.2.0"
+    },
     "laminas/laminas-code": {
         "version": "3.4.1"
     },
@@ -537,6 +543,9 @@
         "version": "v1.17.0"
     },
     "symfony/polyfill-php73": {
+        "version": "v1.17.0"
+    },
+    "symfony/polyfill-php80": {
         "version": "v1.17.0"
     },
     "symfony/process": {
