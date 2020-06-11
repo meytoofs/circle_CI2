@@ -4,40 +4,56 @@
 
 {% block body %}
     <div class="delwar">
-        <img width="40rem" src="/uploads/images/featured/{{ idea_proposition.featuredImage }}"</img>
-            <img src="{{ idea_proposition.featuredImage }}"></img>
+        
+        
+        {# <img src="{{ vich_uploader_asset(IdeaProposition) }}" /> #}
+       
         <div class="title">
-            <h2>{{ idea_proposition.title }}</h2>
+            <h2>{{ idea_proposition.title |raw}}</h2>
         </div>
         <div class="test1">
         <div class="content">
             <div class="author">
-                <p>Créateur: {{idea_proposition.user }}</p>
+                <p>Créateur: {{idea_proposition.user |raw }}</p>
+                
             </div>
             <div class="vote-container">
                 <div class="face face1" id="onclick">
-                    <p>Total score: {{ total_score |number_format(0,',', '')}}</p>
+                    <p>Total score: {{ total_score |number_format(0,',')}}</p>
                 </div>
+                
                 <div class="face face2" id="display">
                     {{ include('idea_proposition/_voteform.html.twig') }}
                 </div>
             </div>
-            <p id="delwar-content">{{ idea_proposition.content }}</p>
+            <p id="delwar-content">{{ idea_proposition.content |raw}}</p>
         </div>
         <div class="room_chat">
-            <p>En construction</p>
-            <p>Vous retrouverez trés bientôt ici même le  chat associé a l'idée, En attandant je vous invite a cliquer sur ce lien pour suivre les derniers salons de discussions tendances !</p>
+            <div id='root'></div>
+            {# <p>En construction</p>
+            <p>Vous retrouverez trés bientôt ici même le  chat associé a l'idée, En attandant je vous invite a cliquer sur ce lien pour suivre les derniers salons de discussions tendances !</p> #}
             <a  action="btn" href="{{ path('room')}}"> Je file discuter !</a>
         </div>
+       
+        </div>
+        <div class="heure">
+            <p>Heure de publication : {{ idea_proposition.date|date('H:i:s ') }} </p>
         </div>
     </div>
-            {{ idea_proposition.date ? idea_proposition.date|date('Y-m-d H:i:s') : '' }}
+    <div class="date">
+        <p>Date de publication: {{ idea_proposition.date|date('Y-m-d ') }}</p> 
+    </div>
+    
             
     <a href="{{ path('idea_proposition_index') }}">back to list</a>
-    {# {% if is_granted (self::EDIT, idea) %} #}
+
+    {% if is_granted ('edit', idea_proposition) %} 
 
         <a href="{{ path('idea_proposition_edit', {'id': idea_proposition.id}) }}">edit</a>
-   
-    {# {% endif %} #} #}
+    {% endif %} 
+    {% if is_granted ('delete', idea_proposition) %} 
+ 
     {{ include('idea_proposition/delete_form.html.twig') }}
+    {% endif %} 
+   
 {% endblock %}
