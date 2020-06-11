@@ -55,6 +55,7 @@ class Messages extends Component {
                                                     <div className="media-body">
                                                         <h4>{message.content}</h4>
                                                         <p>{message.published}</p>
+                                                        <p>{message.user.username}</p>
                                                     </div>
                                                 </div>
                                             </li>
