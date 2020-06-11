@@ -28,20 +28,6 @@ class SearchDataType extends AbstractType
                 'placeholder' => 'Rechercher une Idée'
             ]
         ])
-        ->add('min', NumberType::class, [
-            'label' => false,
-            'required' => false,
-            'attr' => [
-                'placeholder' => 'Score min'
-            ]
-        ])
-        ->add('max', NumberType::class, [
-            'label' => false,
-            'required' => false,
-            'attr' => [
-                'placeholder' => 'Score max'
-            ]
-        ])
         ;
     }
 
