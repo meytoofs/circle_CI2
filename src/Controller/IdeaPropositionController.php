@@ -85,7 +85,7 @@ class IdeaPropositionController extends AbstractController
             $entityManager->flush();
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('idea_proposition_index');
+            return $this->redirectToRoute('idea_proposition_show', ['id' => $id]);
         }
         return $this->render('idea_proposition/show.html.twig', [
             'idea_proposition' => $ideaProposition,
