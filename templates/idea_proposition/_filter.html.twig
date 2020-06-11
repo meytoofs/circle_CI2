@@ -1,4 +1,7 @@
-<a class="btn btn-primary" role="button" href="{{ path('idea_proposition_new') }}" style="margin-top: 10px;">{{ 'form_search.btn_create'|trans }}</a>
+{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+    <a class="btn btn-primary" role="button" href="{{ path('idea_proposition_new') }}" style="margin-top: 10px;">{{ 'form_search.btn_create'|trans }}</a>
+{% endif %}
+
 {{ form_start(form, {attr: {class: 'filter'}}) }}
     {{ form_row(form.q) }}
     
