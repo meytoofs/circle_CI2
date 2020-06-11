@@ -1,28 +1,9 @@
+{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+    <a class="btn btn-primary" role="button" href="{{ path('idea_proposition_new') }}" style="margin-top: 10px;">{{ 'form_search.btn_create'|trans }}</a>
+{% endif %}
 
-{# {{ form_start(form, {attr: {class: 'filter'}}) }}
-    {{ form_row(form.q) }}
-    <h4>Score</h4>
-    <div class="row">
-        <div class="col-md-6">
-            {{ form_row(form.min) }}
-        </div>
-        <div class="col-md-6">
-            {{ form_row(form.max) }}
-        </div>
-    </div>
-    
-  <div id="price-slider" data-min="{{ min }}" data-max="{{ max }}" style="margin-bottom: 3rem;"></div>
-
-  <div class="col-md-6">
-    {{ form_row(form.tri) }}
-</div>
-
-    <button type="submit" class="btn btn-primary w-100">Filtrer</button>
-
-{{ form_end(form) }} #}
-<a class="btn btn-primary" role="button" href="{{ path('idea_proposition_new') }}" style="margin-top: 10px;">Créer une idée</a>
 {{ form_start(form, {attr: {class: 'filter'}}) }}
     {{ form_row(form.q) }}
     
-    <button type="submit" class="btn btn-primary w-100">Filtrer</button>
+    <button type="submit" class="btn btn-primary w-100">{{ 'form_search.submit'|trans }}</button>
 {{ form_end(form) }}

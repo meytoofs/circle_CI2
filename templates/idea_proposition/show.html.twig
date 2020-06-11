@@ -14,12 +14,11 @@
         <div class="test1">
         <div class="content">
             <div class="author">
-                <p>Créateur: {{idea_proposition.user |raw }}</p>
-                
+                <p>{{ 'idea_show.creator'|trans }} {{idea_proposition.user }}</p>
             </div>
             <div class="vote-container">
                 <div class="face face1" id="onclick">
-                    <p>Total score: {{ total_score |number_format(0,',')}}</p>
+                    <p>{{ 'idea_show.total_score'|trans }}: {{ total_score |number_format(0,',')}}</p>
                 </div>
                 
                 <div class="face face2" id="display">
@@ -29,10 +28,9 @@
             <p id="delwar-content">{{ idea_proposition.content |raw}}</p>
         </div>
         <div class="room_chat">
-            <div id='root'></div>
-            {# <p>En construction</p>
-            <p>Vous retrouverez trés bientôt ici même le  chat associé a l'idée, En attandant je vous invite a cliquer sur ce lien pour suivre les derniers salons de discussions tendances !</p> #}
-            <a  action="btn" href="{{ path('room')}}"> Je file discuter !</a>
+            <p>{{ 'idea_show.construct'|trans }}</p>
+            <p>{{ 'idea_show.construct_def'|trans }}</p>
+            <a  action="btn" href="{{ path('room')}}">{{ 'idea_show.btn_chat'|trans }}</a>
         </div>
        
         </div>
@@ -45,11 +43,11 @@
     </div>
     
             
-    <a href="{{ path('idea_proposition_index') }}">back to list</a>
+    <a href="{{ path('idea_proposition_index') }}">{{ 'idea_show.btn_back'|trans }}</a>
 
     {% if is_granted ('edit', idea_proposition) %} 
 
-        <a href="{{ path('idea_proposition_edit', {'id': idea_proposition.id}) }}">edit</a>
+    <a href="{{ path('idea_proposition_edit', {'id': idea_proposition.id}) }}">{{ 'idea_show.btn_edit'|trans }}</a>
     {% endif %} 
     {% if is_granted ('delete', idea_proposition) %} 
  

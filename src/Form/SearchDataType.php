@@ -25,7 +25,7 @@ class SearchDataType extends AbstractType
             'label' => false,
             'required' => false,
             'attr' => [
-                'placeholder' => 'Rechercher une Idée'
+                'placeholder' => 'form_search.placeholder'
             ]
         ])
         ;

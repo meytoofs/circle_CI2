@@ -5,6 +5,7 @@
 {% block body %}
 <div id="onclick" style="display: none;"></div>
     <div data-room_id={{ room.id }} id="root"></div>
+    {% include "chat/_messageform.html.twig" %}
 {% endblock %}
 
 
