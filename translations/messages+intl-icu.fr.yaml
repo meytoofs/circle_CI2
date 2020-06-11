@@ -33,6 +33,9 @@ form_chat:
     placeholder_nom: Exemple/ Mon idée de génie
     placeholder_type: Débat / Fun / Autre..
 
+message_form:
+    placeholder: Votre message
+    submit: Envoyer
 # translations de formulaire enregistrement en anglais
 form_inscription:
     title: inscription sur le site
@@ -63,9 +66,23 @@ login:
     password: mot de passe
     btn_login: connexion
 
+idea_index:
+    title: Toutes nos idées créer par notre magnifique communauté
+    no_result: Pas de résultats :(
 
+quentin_card:
+    readme: Lire la Suite
 
+form_search:
+    placeholder: Rechercher une idée
+    btn_create: Créer une idée
+    submit: Filtrer
 
-
-
-
+idea_show:
+    creator: Créateur
+    total_score: Score
+    construct: En construction
+    construct_def: Vous retrouverez trés bientôt ici même le  chat associé a l'idée, En attandant je vous invite a cliquer sur ce lien pour suivre les derniers salons de discussions tendances !
+    btn_chat: Je file discuter !
+    btn_back: Retour
+    btn_edit: Editer
