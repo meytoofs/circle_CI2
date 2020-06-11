@@ -48,10 +48,23 @@ class ChatController extends AbstractController
         ]);
     }
     /**
-     * @Route("/room/{id}", name="chat_show", methods={"GET"})
+     * @Route("/room/{id}", name="chat_show", methods={"GET", "POST"})
      */
     public function show(Room $room, RoomRepository $repository, Request $request, SerializerInterface $serializer, NormalizerInterface $normalizer)
     {
+        $id = $room->getId();
+        $message = new Message();
+        $message->setUser($this->getUser());
+        $message->setRoom($room);
+        $message->setPublished(new \DateTime());
+        $form = $this->createForm(MessageType::class, $message);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($message);
+            $entityManager->flush();
+            return $this->redirectToRoute('chat_show', ['id' => $id]);
+        }
         $displayMessage = $repository->findAll();
         $messageNormalises =  $normalizer->normalize($displayMessage, null, ['groups' => 'room:Message']); //Normalise mon groupe dans mon objet 'Message' en array pour éviter les circular Reference
         $json = json_encode($messageNormalises); //serialise l'array en JSON 
@@ -60,6 +73,7 @@ class ChatController extends AbstractController
         return $this->render('chat/chat.html.twig', [
             'messages' => $displayMessage,
             'room' => $room,
+            'form' => $form->createView(),
         ]);
     }
     /**

@@ -3,7 +3,7 @@
 {% block title %}IdeaProposition index{% endblock %}
 
 {% block body %}
-    <h1>Toutes nos idées créer par la communauté</h1>
+    <h1>{{ 'idea_index.title'|trans }}</h1>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2">
@@ -17,7 +17,7 @@
                 </div>
             </div>
                 <tr>
-                    <p colspan="7">no records found</p>
+                    <p colspan="7">{{ 'idea_index.no_result'|trans }}</p>
                 </tr>
             {% endfor %}
         <div style="margin-top: 4rem;">

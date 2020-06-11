@@ -9,7 +9,7 @@
         <div class="face face2">
             <div class="content">
                 <p>{{ idea_proposition.content }}</p>
-                <a href="{{ path('idea_proposition_show', {'id': idea_proposition.id}) }}">Read More</a>
+                <a href="{{ path('idea_proposition_show', {'id': idea_proposition.id}) }}">{{ 'quentin_card.readme'|trans }}</a>
                 <p id="avg">note: {{ idea_proposition.avg }}</p>
                 <p id="user"> {{idea_proposition.user }}</p>
             </div>
