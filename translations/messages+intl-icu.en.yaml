@@ -33,6 +33,9 @@ form_chat:
     placeholder_nom: Exemple/ My genius idea
     placeholder_type: Debate / Fun / Other..
 
+message_form:
+    placeholder: your message
+    submit: Send
 # translations de formulaire enregistrement en anglais
 
 form_inscription:
@@ -62,3 +65,24 @@ login:
     username: Username
     password: password
     btn_login: Sign in
+
+idea_index:
+    title: All Ideas create by our Beautiful Community
+    no_result: no result found :(
+
+quentin_card:
+    readme: Read More
+
+form_search:
+    placeholder: Search an idea
+    btn_create: Create an idea
+    submit: Filter
+
+idea_show:
+    creator: Créator
+    total_score: Score
+    construct: Construct
+    construct_def: You will find early Soon here the chat Room of this Idea !
+    btn_chat: Going To chat!
+    btn_back: Back
+    btn_edit: Edit
