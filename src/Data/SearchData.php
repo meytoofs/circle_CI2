@@ -4,6 +4,14 @@ namespace App\Data;
 
 class SearchData
 {
+
+     /**
+     * @var bolean
+     */
+    public $tri=false ;
+
+
+
     /**
      * @var int
      */

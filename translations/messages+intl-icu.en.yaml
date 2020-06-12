@@ -36,6 +36,7 @@ form_chat:
 message_form:
     placeholder: your message
     submit: Send
+    
 # translations de formulaire enregistrement en anglais
 
 form_inscription:

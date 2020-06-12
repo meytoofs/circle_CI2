@@ -4,10 +4,12 @@
 
 {% block body %}
     <div class="delwar">
-        <img width="40rem" src="/uploads/images/featured/{{ idea_proposition.featuredImage }}"</img>
-            <img src="{{ idea_proposition.featuredImage }}"></img>
+        
+        
+        {# <img src="{{ vich_uploader_asset(IdeaProposition) }}" /> #}
+       
         <div class="title">
-            <h2>{{ idea_proposition.title }}</h2>
+            <h2>{{ idea_proposition.title |raw}}</h2>
         </div>
         <div class="test1">
         <div class="content">
@@ -16,28 +18,40 @@
             </div>
             <div class="vote-container">
                 <div class="face face1" id="onclick">
-                    <p>{{ 'idea_show.total_score'|trans }}: {{ total_score |number_format(0,',', '')}}</p>
+                    <p>{{ 'idea_show.total_score'|trans }}: {{ total_score |number_format(0,',')}}</p>
                 </div>
+                
                 <div class="face face2" id="display">
                     {{ include('idea_proposition/_voteform.html.twig') }}
                 </div>
             </div>
-            <p id="delwar-content">{{ idea_proposition.content }}</p>
+            <p id="delwar-content">{{ idea_proposition.content |raw}}</p>
         </div>
         <div class="room_chat">
             <p>{{ 'idea_show.construct'|trans }}</p>
             <p>{{ 'idea_show.construct_def'|trans }}</p>
             <a  action="btn" href="{{ path('room')}}">{{ 'idea_show.btn_chat'|trans }}</a>
         </div>
+       
+        </div>
+        <div class="heure">
+            <p>Heure de publication : {{ idea_proposition.date|date('H:i:s ') }} </p>
         </div>
     </div>
-            {{ idea_proposition.date ? idea_proposition.date|date('Y-m-d H:i:s') : '' }}
+    <div class="date">
+        <p>Date de publication: {{ idea_proposition.date|date('d-m-y ') }}</p> 
+    </div>
+    
             
     <a href="{{ path('idea_proposition_index') }}">{{ 'idea_show.btn_back'|trans }}</a>
-    {# {% if is_granted (self::EDIT, idea) %} #}
 
-        <a href="{{ path('idea_proposition_edit', {'id': idea_proposition.id}) }}">{{ 'idea_show.btn_edit'|trans }}</a>
-   
-    {# {% endif %} #} #}
+    {% if is_granted ('edit', idea_proposition) %} 
+
+    <a href="{{ path('idea_proposition_edit', {'id': idea_proposition.id}) }}">{{ 'idea_show.btn_edit'|trans }}</a>
+    {% endif %} 
+    {% if is_granted ('delete', idea_proposition) %} 
+ 
     {{ include('idea_proposition/delete_form.html.twig') }}
+    {% endif %} 
+   
 {% endblock %}

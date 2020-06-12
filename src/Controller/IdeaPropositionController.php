@@ -54,6 +54,7 @@ class IdeaPropositionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $ideaProposition->setUser($this->getUser());
             $entityManager->persist($ideaProposition);
             $entityManager->flush();
             return $this->redirectToRoute('idea_proposition_index');
@@ -97,9 +98,9 @@ class IdeaPropositionController extends AbstractController
     /**
      * @Route("/{id}/edit", name="idea_proposition_edit", methods={"GET","POST"})
      */
-    public function edit(IdeaProposition $idea, Request $request, IdeaProposition $ideaProposition): Response
+    public function edit(Request $request, IdeaProposition $ideaProposition): Response
     {
-        $this->denyAccessUnlessGranted('edit', $idea);
+        $this->denyAccessUnlessGranted('edit', $ideaProposition);
 
         $form = $this->createForm(IdeaPropositionType::class, $ideaProposition);
         $form->handleRequest($request);
@@ -121,6 +122,7 @@ class IdeaPropositionController extends AbstractController
      */
     public function delete(Request $request, IdeaProposition $ideaProposition): Response
     {
+        $this->denyAccessUnlessGranted('delete', $ideaProposition);
         if ($this->isCsrfTokenValid('delete'.$ideaProposition->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($ideaProposition);

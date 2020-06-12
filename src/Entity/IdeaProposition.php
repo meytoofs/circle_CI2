@@ -49,7 +49,7 @@ class IdeaProposition
     private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="ideaPropositions")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="ideaPropositions" )
      */
     private $user;
 

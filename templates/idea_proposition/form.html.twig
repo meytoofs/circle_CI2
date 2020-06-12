@@ -4,10 +4,11 @@
 {{form_start(form,{'attr': {'novalidate': 'novalidate'}})}} 
 
 {{form_row(form.title,{'label':'titre de l\'idée'})}}
-{{form_row(form.content,{'label':'discription de l\'idée'})}}
+{{form_row(form.content,{'label':'déscription de l\'idée'})}}
 {{form_row(form.imageFile,{'label':'image de l\'idée'})}}
+{# {{form_row(form.user)}} #}
 
 
 
-<button class="btn">{{ button_label|default('Save') }}</button>
+<button class="btn btn-primary ">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}  

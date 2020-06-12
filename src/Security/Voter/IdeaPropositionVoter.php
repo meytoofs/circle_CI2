@@ -18,7 +18,7 @@ class IdeaPropositionVoter extends Voter
             && $subject instanceof \App\Entity\IdeaProposition;
     }
 
-    protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
+    protected function voteOnAttribute($attribute, $idea, TokenInterface $token)
     {
         $user = $token->getUser();
         // if the user is anonymous, do not grant access
@@ -29,11 +29,11 @@ class IdeaPropositionVoter extends Voter
         // ... (check conditions and return true to grant permission) ...
         switch ($attribute) {
             case 'edit':
-                // return $subject->getUser()->getId()==$user()->getID();
-                return $subject->getUser()===$user;
+                return $idea->getUser()==$user;
+                // return $idea->getUser()===$user;
                 break;
             case 'delete':
-                return $subject->getUser()->getId()==$user()->getID();
+                return $idea->getUser()==$user;
                 break;
         }
 

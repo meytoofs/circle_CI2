@@ -59,6 +59,13 @@ class IdeaPropositionRepository extends ServiceEntityRepository
             ->andWhere('i.totalScore <= :max')
             ->setParameter('max', "%{$search->max}%");
     }
+    if  (($search->tri)==1) {
+
+        $query = $query
+            
+            ->orderBy('i.date', 'DESC');
+            
+    }
         $query = $this->getSearchQuery($search)->getQuery();
         return $this->paginator->paginate(
             $query,
@@ -85,6 +92,13 @@ class IdeaPropositionRepository extends ServiceEntityRepository
         $query = $query
             ->andWhere('i.totalScore <= :max')
             ->setParameter('max', "%{$search->max}%");
+    }
+    if  (($search->tri)==1) {
+
+        $query = $query
+            
+            ->orderBy('i.date', 'DESC');
+            
     }
         return $query;
     }

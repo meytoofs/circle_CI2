@@ -10,7 +10,7 @@
                 {% include 'idea_proposition/_filter.html.twig' with {form: form, min: min, max: max} only%}
             </div>
             <div class="col-md-10">
-                <div class="grid">
+                <div id="displayDate" class="grid">
                     {% for idea_proposition in idea_propositions %}
                         {%include 'idea_proposition/_quentinCard.html.twig' %}
                     {% else %}
@@ -19,9 +19,12 @@
                 <tr>
                     <p colspan="7">{{ 'idea_index.no_result'|trans }}</p>
                 </tr>
+              
             {% endfor %}
         <div style="margin-top: 4rem;">
             {{ knp_pagination_render(idea_propositions)}}
         </div>
     </div>
+
+   
 {% endblock %}

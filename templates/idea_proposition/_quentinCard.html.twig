@@ -1,7 +1,13 @@
+
 <div class="quentin">
     <div class="card">
         <div class="face face1">
             <div class="content">
+
+                {# pour upload  #}
+                {# <img src="{{ vich_uploader_asset(idea_proposition) }}" /> #}
+                
+                {# pour les fixtures #}
                 <img src="{{ idea_proposition.featuredImage }}"></img>
                 <h2>{{ idea_proposition.title | raw}}</h2>
             </div>
@@ -11,7 +17,7 @@
                 <p>{{ idea_proposition.content | raw }}</p>
                 <a href="{{ path('idea_proposition_show', {'id': idea_proposition.id}) }}">{{ 'quentin_card.readme'|trans }}</a>
                 <p id="avg">note: {{ idea_proposition.avg }}</p>
-                <p id="user"> {{idea_proposition.user }}</p>
+            
             </div>
         </div>
     </div>
