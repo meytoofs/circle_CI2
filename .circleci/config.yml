@@ -18,7 +18,7 @@ jobs:
       - run:
           name: Install Composer
           command: |
-            - run: composer install
+             composer install
       # Dependencies
       - checkout
       - restore_cache:
