@@ -15,10 +15,6 @@ jobs:
       - run:
           name: Install PHP Extensions
           command: docker-php-ext-install pdo pdo_mysql zip
-      - run:
-          name: Install Composer
-          command: |
-             composer install
       # Dependencies
       - checkout
       - restore_cache:
