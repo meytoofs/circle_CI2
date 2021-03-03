@@ -4,6 +4,7 @@ php:
 
 script:
    - composer install
+   - composer require --dev symfony/phpunit-bridge
    - composer update
    - vendor/bin/phpunit
 services:
