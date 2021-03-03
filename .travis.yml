@@ -6,3 +6,5 @@ script:
    - composer install
    - composer update
    - vendor/bin/phpunit
+services:
+  - mysql
