@@ -10,7 +10,6 @@ script:
    - yarn build
    - php bin/console d:d:c
    - php bin/console doctrine:schema:update --force
-   - php bin/console hautelook:fixtures:load
    
    
 services:
