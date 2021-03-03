@@ -6,6 +6,6 @@ script:
    - composer install
    - composer require --dev symfony/phpunit-bridge
    - composer update
-   - vendor/bin/phpunit
+script: ./vendor/bin/phpunit
 services:
   - mysql
